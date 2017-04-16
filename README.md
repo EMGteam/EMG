@@ -66,6 +66,7 @@ Jak ktoś nie używał wcześcniej Visuala i CeHaszy
 Co jest
 * [x] Rysowanie wykresów
 * [x] Wizualizacja siły (kwadratowe kontrolki, ale można dowolnie zmieniać ich kształt -> byle nie za małe by tekst się mieścił :P)
+
 Czego brak
 * [ ] Obsługa karty - to niech poczeka aż ją dostaniemy, pliki *.dll z obsługą karty teoretycznie znalazłem 
 * [ ] Obsługa samej procedury pomiarowej - to potem
