@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace EMG
 {
+  /// <summary>
+  /// Klasa zawierająca definicję kontrolki do wizualizacji siły nacisku
+  /// </summary>
   public partial class EMGforceSensor : UserControl
   {
+    /// <summary>
+    /// Klasa statyczna służąca dzieleniu tego, co będzie wspólne dla wszystkich kontrolek
+    /// </summary>
     public static class ForceSensorSettings
     {
       public static float MIN_FORCE = 0f;
@@ -19,16 +25,30 @@ namespace EMG
       public static Color textColor = Color.White;
     }
 
+    /// <summary>
+    /// Konstruktor klasy
+    /// </summary>
     public EMGforceSensor()
     {
       InitializeComponent();
     }
-    
+
+    /// <summary>
+    /// Nie mam pojęcia co to robi. Nie no żartuję, metoda oblicza wartości dla kolorów
+    /// </summary>
+    /// <param name="a">Brak opisu</param>
+    /// <param name="b">Brak opisu</param>
+    /// <param name="p">Brak opisu</param>
+    /// <returns></returns>
     byte Interpolate(byte a, byte b, double p)
     {
       return (byte)(a * (1 - p) + b * p);
     }
 
+    /// <summary>
+    /// Metoda pozwalająca na zadanie wizualizowanej wartości do kontrolki
+    /// </summary>
+    /// <param name="value">Przekazywana wartość</param>
     public void setValue(float value)
     {
       // this.BackColor = getColor(Convert.ToInt32(value));
@@ -48,6 +68,11 @@ namespace EMG
       formGraphics.Dispose();
     }
 
+    /// <summary>
+    /// Metoda służąca wyliczeniu wartości koloru RGB na podstawie wartości przekazanej do kontrolki.
+    /// </summary>
+    /// <param name="v">Wartość przekazywana</param>
+    /// <returns></returns>
     private Color getColor(int v)
     {
       SortedDictionary<int, Color> colorDict = new SortedDictionary<int, Color>

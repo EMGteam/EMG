@@ -17,17 +17,50 @@ namespace EMG
   /// </summary>
   public partial class EMGchart : UserControl
   {
+    /// <summary>
+    /// Klasa zawierająca wspólne parametry wzystkich wykresów (Kolory etc.)
+    /// </summary>
     public static class EMGchartSettings
     {
+      /// <summary>
+      /// Ilość próbek na wykres
+      /// </summary>
       public static int MAX_VALUE_COUNT { get; } = 128;
+      /// <summary>
+      /// Odstęp rysowania linii siatki w pixelach
+      /// </summary>
       public static int GRID_SPACING { get; } = 16;
+      /// <summary>
+      /// Przełącznik do rysowania, bądź nie, linii o średniej wartości punktów na wykresie
+      /// </summary>
       public static bool DRAW_AVERAGE_LINE { get; } = false;
+      /// <summary>
+      /// Przełącznik służacy załączeniu/wyłączeniu rysowania siatki
+      /// </summary>
       public static bool SHOW_GRID_LINE { get; } = false;
+      /// <summary>
+      /// Zdefiniowany mazak z kolorem dla linii przebiegu
+      /// </summary>
       public static Pen linePen { get; } = new Pen(Color.Tomato);
+      /// <summary>
+      /// Mazak definiujący kolor siatki
+      /// </summary>
       public static Pen gridPen { get; } = new Pen(Color.Black);
+      /// <summary>
+      /// Kolor dla napisów na wykresach
+      /// </summary>
       public static Color lineColor { get; } = Color.Black;
+      /// <summary>
+      /// Kolor tła wykresu
+      /// </summary>
       public static Color backgroundColor { get; } = Color.WhiteSmoke;
+      /// <summary>
+      /// Kolor dla linii y = 0, ale chyba jej nie potrzebujemy
+      /// </summary>
       public static Pen lineZeroPen { get; } = new Pen(Color.Tomato);
+      /// <summary>
+      /// Zmiana trybu rysowania - z timerem (aktualizacja co X ms) lub bez (aktualizacja co próbkę)
+      /// </summary>
       public static TimerMode timerMode { get; set; } = TimerMode.Disabled;
     }
 
@@ -43,6 +76,9 @@ namespace EMG
     private List<float> drawValues = new List<float>(EMGchartSettings.MAX_VALUE_COUNT);
     private Queue<float> waitinValues = new Queue<float>();
 
+    /// <summary>
+    /// Konstruktor
+    /// </summary>
     public EMGchart()
     {
       InitializeComponent();
@@ -73,12 +109,19 @@ namespace EMG
       }
     }
 
+    /// <summary>
+    /// Metoda służąca ewentualnemu czyszczeniu zawartości wykresu
+    /// </summary>
     public void Clear()
     {
       this.drawValues.Clear();
       this.Invalidate();
     }
 
+    /// <summary>
+    /// Metoda służąca dodawaniu kolejnych wartości do wykresu
+    /// </summary>
+    /// <param name="value">Wrzucana wartość</param>
     public void AddValue(float value)
     {
       // this.waitinValues.Enqueue(value);
@@ -91,6 +134,10 @@ namespace EMG
       }
     }
 
+    /// <summary>
+    /// Metoda dodająca wartość na początek listy rysowanych punktów
+    /// </summary>
+    /// <param name="value">Przekazywana wartość</param>
     private void ChartAppend(float value)
     {
       this.drawValues.Insert(0, value);
@@ -126,6 +173,11 @@ namespace EMG
     }
     */
 
+    /// <summary>
+    /// Metoda obliczająca położenie punktu 
+    /// </summary>
+    /// <param name="value">Przekazywana wartość</param>
+    /// <returns>Położenie punktu na wyrkesie w pixelach</returns>
     private int CalcVerticalPosition(float value)
     {
       value += this.currentMaxValue;
@@ -151,6 +203,10 @@ namespace EMG
     }
     */
 
+    /// <summary>
+    /// Metoda rysująca zawartość wykresu
+    /// </summary>
+    /// <param name="grs">Klasa rysująca</param>
     private void DrawChart(Graphics grs)
     {
       this.visibleValues = Math.Min(this.Width / this.valueSpacing, this.drawValues.Count);
@@ -200,6 +256,10 @@ namespace EMG
     } 
     */
 
+    /// <summary>
+    /// Metoda rysująca siatkę oraz tło wykresu
+    /// </summary>
+    /// <param name="grs">Obiekt rysujący</param>
     private void DrawBackgroundAndGrid(Graphics grs)
     {
       Debug.WriteLine("DrawBackgroundAndGrid()");
@@ -224,6 +284,10 @@ namespace EMG
       }
     }
 
+    /// <summary>
+    /// Przeciążenie metody rysującej zawartość kontrolki
+    /// </summary>
+    /// <param name="e">Obiekt zawierający informacje o zdarzeniu</param>
     protected override void OnPaint(PaintEventArgs e)
     {
       Debug.WriteLine("OnPaint()");
@@ -233,6 +297,10 @@ namespace EMG
       this.DrawChart(e.Graphics);
     }
 
+    /// <summary>
+    /// Przeciążenie metoy wywoływanej w przypadku zmiany rozmiaru kontrolki
+    /// </summary>
+    /// <param name="e">Obiekt zawierający informacje o zdarzeniu</param>
     protected override void OnResize(EventArgs e)
     {
       Debug.WriteLine("OnResize()");
@@ -240,8 +308,16 @@ namespace EMG
       this.Invalidate();
     }
 
+    /// <summary>
+    /// Metoda wymuszająca przerysowanie zawartości kontrolki
+    /// </summary>
+    /// <param name="sender">Obiekt wywołujący</param>
+    /// <param name="e">Argumenty zdarzenia</param>
     private void redrawTimer_Tick(object sender, EventArgs e) => this.Invalidate();
 
+    /// <summary>
+    /// Prosty enum do zarządzania sposobem odświeżania wykresu
+    /// </summary>
     public enum TimerMode
     {
       Enabled,

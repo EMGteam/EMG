@@ -10,12 +10,18 @@ using System.Windows.Forms;
 
 namespace EMG
 {
+  /// <summary>
+  /// Klasa zawierająca definicje okna głównego aplikacji
+  /// </summary>
   public partial class EMGtestGUI : Form
   {
     private EMGchart[] chartTab = new EMGchart[16];
     private EMGforceSensor[] forceSensors = new EMGforceSensor[5];
     private Random rnd = new Random();
 
+    /// <summary>
+    /// Konstruktor
+    /// </summary>
     public EMGtestGUI()
     {
       InitializeComponent();
@@ -23,6 +29,8 @@ namespace EMG
       //
       int tmp = 0;
       int tmp2 = 0;
+      
+      // Dodanie kontrolek do list
       foreach (Control ctr in this.Controls)
       {
         if (ctr is EMGchart)
@@ -49,6 +57,12 @@ namespace EMG
       GRS.Dispose();
     }
     
+    /// <summary>
+    /// Metoda wywoływana w określonych przedziałach czasowych. 
+    /// <para/>Chwilowo zapycha aplikację randomowymi danymi.
+    /// </summary>
+    /// <param name="sender">Obiekt wywołujący</param>
+    /// <param name="e">Argumenty zdarzenia</param>
     private void timerTEST_Tick(object sender, EventArgs e)
     {
       foreach (EMGchart chart in this.chartTab)
@@ -60,5 +74,14 @@ namespace EMG
         sensor.setValue(Convert.ToSingle(this.rnd.NextDouble() * 100));
       }
     }
+  }
+
+  /// <summary>
+  /// Przestrzeń nazw dzielona przez wszystkie projekty
+  /// </summary>
+  [System.Runtime.CompilerServices.CompilerGenerated]
+  class NamespaceDoc
+  {
+
   }
 }
