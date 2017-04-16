@@ -15,14 +15,12 @@ namespace EMG
     private EMGchart[] chartTab = new EMGchart[16];
     private EMGforceSensor[] forceSensors = new EMGforceSensor[5];
     private Random rnd = new Random();
+
     public EMGtestGUI()
     {
       InitializeComponent();
-      this.timerTEST.Interval = 500;
-    }
 
-    private void EMGtestGUI_Load(object sender, EventArgs e)
-    {
+      //
       int tmp = 0;
       int tmp2 = 0;
       foreach (Control ctr in this.Controls)
@@ -43,13 +41,14 @@ namespace EMG
       {
         this.chartTab[i].chartID = i + 1;
       }
-      this.timerTEST.Interval = 10;
+      this.timerTEST.Interval = 25;
       this.timerTEST.Start();
 
       Graphics GRS = this.CreateGraphics();
-      // GRS.DrawImage();
+      // Obraz ręki
+      GRS.Dispose();
     }
-
+    
     private void timerTEST_Tick(object sender, EventArgs e)
     {
       foreach (EMGchart chart in this.chartTab)

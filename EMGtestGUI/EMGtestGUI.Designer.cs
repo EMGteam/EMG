@@ -56,6 +56,7 @@
       // timerTEST
       // 
       this.timerTEST.Enabled = true;
+      this.timerTEST.Interval = 500;
       this.timerTEST.Tick += new System.EventHandler(this.timerTEST_Tick);
       // 
       // emgChart16
@@ -226,7 +227,7 @@
       this.sensorPinky.Size = new System.Drawing.Size(62, 62);
       this.sensorPinky.TabIndex = 21;
       // 
-      // TestForm
+      // EMGtestGUI
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -254,7 +255,6 @@
       this.Controls.Add(this.emgChart1);
       this.Name = "EMGtestGUI";
       this.Text = "EMGtestGUI";
-      this.Load += new System.EventHandler(this.EMGtestGUI_Load);
       this.ResumeLayout(false);
 
     }

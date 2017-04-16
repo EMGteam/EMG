@@ -42,7 +42,6 @@ namespace EMG
 
     public EMGchart()
     {
-      Debug.WriteLine("EMGchart()");
       InitializeComponent();
 
       this.redrawTimer.Interval = 50;
@@ -81,6 +80,8 @@ namespace EMG
     {
       // this.waitinValues.Enqueue(value);
       this.ChartAppend(value);
+
+      // Dla trybu bez timera odświeżanie wykresu co nową probkę
       if (EMGchartSettings.timerMode == TimerMode.Disabled)
       {
         this.Invalidate();
@@ -103,6 +104,7 @@ namespace EMG
       }
     }
 
+    /* Unused
     private void ChartAppendFromQueue()
     {
       if (this.waitinValues.Count > 0)
@@ -119,6 +121,7 @@ namespace EMG
 
       this.Invalidate();
     }
+    */
 
     private int CalcVerticalPosition(float value)
     {
@@ -128,6 +131,7 @@ namespace EMG
       return Convert.ToInt32(Math.Round(value));
     }
 
+    /* Unused
     private float GetHighestValue()
     {
       float maxVal = 0;
@@ -142,22 +146,24 @@ namespace EMG
 
       return maxVal;
     }
+    */
 
     private void DrawChart(Graphics grs)
     {
-      Debug.WriteLine("DrawCHart()");
       this.visibleValues = Math.Min(this.Width / this.valueSpacing, this.drawValues.Count);
 
-      this.currentMaxValue = this.GetHighestValue();
+      // this.currentMaxValue = this.GetHighestValue();
 
       Point prevPoint = new Point(this.Width + this.valueSpacing, this.Height);
       Point currPoint = new Point();
 
+      /* 
       if (this.visibleValues > 0 && EMGchartSettings.DRAW_AVERAGE_LINE)
       {
         this.averageValue = 0;
         this.DrawAverageLine(grs);
-      }
+      } 
+      */
 
       for (int i = 0; i < this.visibleValues; i++)
       {
@@ -175,6 +181,7 @@ namespace EMG
       ControlPaint.DrawBorder3D(grs, 0, 0, this.Width, this.Height, this.borderStyle);
     }
 
+    /* Unused
     private void DrawAverageLine(Graphics grs)
     {
       Debug.WriteLine("DrawAverageLine()");
@@ -187,7 +194,8 @@ namespace EMG
 
       int vertPosition = this.CalcVerticalPosition(this.averageValue);
       grs.DrawLine(EMGchartSettings.linePen, 0, vertPosition, this.Width, vertPosition);
-    }
+    } 
+    */
 
     private void DrawBackgroundAndGrid(Graphics grs)
     {
