@@ -3,17 +3,17 @@
 ## Intrukcja instalacji
 * Polecam Visual Studio 2017 (Community chyba 4gb zajmuje)
 * Klonujecie zawartość repozytorium
-* Otwieracie (Polecam poprzez plik solucji - EMG/EMG.sln)
-* W środku są 3 projekty -> kompilujecie EMGchart i EMGforceSensor
-* W EMGtestGUI: Project -> Add reference/dodaj odwołanie -> EMG/EMGforceSensor/bin/Debug/EMGforceSensor.dll oraz EMG/EMGchart/bin/Debug/EMGchart.dll (sorka za zamieszanie, .gitignore wywala foldery [Bb]in więc i *.dll przepadły a zwykłe skopiowanie = trzeba kopiować co każdą zmianę w nich...
-* Ustawiacie EMGtestGUI jako główny projekt (Otwieracie go potem Project -> Ustaw jako startowy)
+* Otwieracie (Polecam poprzez plik solucji - `EMG/EMG.sln`)
+* W środku są 3 projekty -> kompilujecie `EMGchart` i `EMGforceSensor`
+* W EMGtestGUI: `Project` -> `Add reference/dodaj odwołanie (Przeglądaj)` -> `EMG/EMGforceSensor/bin/Debug/EMGforceSensor.dll` oraz `EMG/EMGchart/bin/Debug/EMGchart.dll` (sorka za zamieszanie, .gitignore wywala foldery [Bb]in więc i *.dll przepadły a zwykłe skopiowanie = trzeba kopiować co każdą zmianę w nich...
+* Ustawiacie `EMGtestGUI` jako główny projekt (Otwieracie go potem Project -> Ustaw jako startowy)
 
 ## Kompilacja
-* F6 - kompiluje całość (W razie zmian w projektach kontrolek)
-* ctrl + F5 - odpala projekt główny (tutaj EMGtestGUI) / F5 - debugowanie
+* `F6` - kompiluje całość (W razie zmian w projektach kontrolek)
+* `ctrl + F5` - odpala projekt główny (tutaj EMGtestGUI) / `F5` - debugowanie
 
 ## Projekty w rozwiązaniu
-### EMGchart
+### `EMGchart`
 Kontrolka odpowiadająca za wyświetlanie danych w postaci wykresu
 
 Zakres +/- na sztywno, trzeba będzie zmienić jak już ogarniemy kartę i sprawdzimy jakie sygnały idą ze wzmacniacza
@@ -42,8 +42,9 @@ Przerysowanie wykresu co każdy nowy punkt
   public static TimerMode timerMode { get; set; } = TimerMode.Disabled;
 ```
 
-### EMGforceSensor 
+### `EMGforceSensor` 
 Kontrolka odpowiadająca za wyświetlanie danych z czujników nacisku
+
 Zmiana koloru/liczby w zależności od zadawanej wartości
 * Zakres wartości również na sztywno
 ```c#
@@ -52,8 +53,10 @@ Zmiana koloru/liczby w zależności od zadawanej wartości
   public static float MAX_FORCE = 100f;
 ```
 
-### EMGtestGUI
+### `EMGtestGUI`
 Odpowiada za iterfejs graficzny
+
+Chwilowo prócz zawartych w niej kontrolek (wykresy/wskaźniki siły) nie zawiera nic więcej prócz timera, który zarzuca program randomowymi danymi.
 
 ### Uwagi
 Jak ktoś nie używał wcześcniej Visuala i CeHaszy
@@ -61,13 +64,14 @@ Jak ktoś nie używał wcześcniej Visuala i CeHaszy
 * To co powinno interesować mniej wtajemniczonych to tylko pliki nazwa_projektu.cs (np. EMGchart.cs), żadne .Designer.cs etc :P
 
 Co jest
-* Rysowanie wykresów
-* Wizualizacja siły (kwadratowe kontrolki, ale można dowolnie zmieniać ich kształt -> byle nie za małe by tekst się mieścił :P)
+* [x] Rysowanie wykresów
+* [x] Wizualizacja siły (kwadratowe kontrolki, ale można dowolnie zmieniać ich kształt -> byle nie za małe by tekst się mieścił :P)
 Czego brak
-* Obsługa karty - to niech poczeka aż ją dostaniemy, pliki *.dll z obsługą karty teoretycznie znalazłem 
-* Obsługa samej procedury pomiarowej - to potem
-* No i zapis do pliku - też potem :P
-* Trzeba skleić ładną ikonkę - najlepiej trzymać się tego:
+* [ ] Obsługa karty - to niech poczeka aż ją dostaniemy, pliki *.dll z obsługą karty teoretycznie znalazłem 
+* [ ] Obsługa samej procedury pomiarowej - to potem
+* [ ] No i zapis do pliku/format - też potem :P
+* [ ] Trzeba też uzupełnić funkcjonalność okna o jakieś *menu* (nie z żarciem...)
+* [ ] Trzeba skleić ładną ikonkę - najlepiej trzymać się tego:
 > Application icons and Control Panel items: The full set includes 16x16, 32x32, 48x48, and 256x256 (code scales between 32 and 256).
 
 ### Postanowienia końcowe
