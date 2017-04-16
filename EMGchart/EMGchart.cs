@@ -12,6 +12,9 @@ using System.Diagnostics;
 
 namespace EMG
 {
+  /// <summary>
+  /// Pojedyncza kontrolka służąca rysowaniu wykresu
+  /// </summary>
   public partial class EMGchart : UserControl
   {
     public static class EMGchartSettings
