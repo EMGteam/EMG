@@ -4,13 +4,14 @@
 * Polecam Visual Studio 2017 (Community chyba 4gb zajmuje)
 * Klonujecie zawartość repozytorium
 * Otwieracie (Polecam poprzez plik solucji - `EMG/EMG.sln`)
-* W środku są 3 projekty -> kompilujecie `EMGchart` i `EMGforceSensor`
-* W EMGtestGUI: `Project` -> `Add reference/dodaj odwołanie (Przeglądaj)` -> `EMG/EMGforceSensor/bin/Debug/EMGforceSensor.dll` oraz `EMG/EMGchart/bin/Debug/EMGchart.dll` (sorka za zamieszanie, .gitignore wywala foldery [Bb]in więc i *.dll przepadły a zwykłe skopiowanie = trzeba kopiować co każdą zmianę w nich...
+* ~~W środku są 3 projekty -> kompilujecie `EMGchart` i `EMGforceSensor`~~
+* ~~W EMGtestGUI: `Project` -> `Add reference/dodaj odwołanie (Przeglądaj)` -> `EMG/EMGforceSensor/bin/Debug/EMGforceSensor.dll` oraz `EMG/EMGchart/bin/Debug/EMGchart.dll` (sorka za zamieszanie, .gitignore wywala foldery [Bb]in więc i *.dll przepadły a zwykłe skopiowanie = trzeba kopiować co każdą zmianę w nich...~~
+* Te dwa powyżej powinny już być nieaktualne i powinno działać po referencjach do projektów a nie ścieżkach, jakby jednak był problemy to `Project` -> `Add reference/dodaj odwołanie` -> z listy po lewej wybieracie `Project` -> `Solution` i zaznaczacie wszystkie *.dll (po jednej dla każdego projektu wyłączając GUI)
 * Ustawiacie `EMGtestGUI` jako główny projekt (Otwieracie go potem Project -> Ustaw jako startowy)
 
 ## Kompilacja
 * `F6` - kompiluje całość (W razie zmian w projektach kontrolek)
-* `ctrl + F5` - odpala projekt główny (tutaj EMGtestGUI) / `F5` - debugowanie
+* `ctrl + F5` - kompiluje i odpala projekt główny (tutaj EMGtestGUI) / `F5` - debugowanie
 
 ## Projekty w rozwiązaniu
 ### `EMGchart`
@@ -53,12 +54,18 @@ Zmiana koloru/liczby w zależności od zadawanej wartości
   public static float MAX_FORCE = 100f;
 ```
 
+### `EMGdebugConsole`
+Dorzuciłem taki twór w razie, gdybyśmy chcieli wyrzucać jakieś komunikaty poprzez aplikację (np. "zapisano do pliku ..." czy coś)
+
 ### `EMGtestGUI`
 Odpowiada za iterfejs graficzny
 
 Chwilowo prócz zawartych w niej kontrolek (wykresy/wskaźniki siły) nie zawiera nic więcej prócz timera, który zarzuca program randomowymi danymi.
 
-### Uwagi
+Całość wygląda tak:
+![GUI v1.0](/Images/ver1.png)
+
+## Uwagi
 Jak ktoś nie używał wcześcniej Visuala i CeHaszy
 * Niektóre pliki z kodem nie są bezpośrednio dostępne z eksploratora projektu - np. kod kryjący się pod kontrolką/GUI -> Próbując otworzyć z menu np. plik EMGtestGUI otworzy nam się kreator okienka a nie sam kod (Klikamy wtedy prawym na okienko -> pokaż kod ew. F7)
 * To co powinno interesować mniej wtajemniczonych to tylko pliki nazwa_projektu.cs (np. EMGchart.cs), żadne .Designer.cs etc :P
@@ -75,8 +82,5 @@ Czego brak
 * [ ] Trzeba skleić ładną ikonkę - najlepiej trzymać się tego:
 > Application icons and Control Panel items: The full set includes 16x16, 32x32, 48x48, and 256x256 (code scales between 32 and 256).
 
-### Postanowienia końcowe
+## Postanowienia końcowe
 [Link do Trello](https://trello.com/b/E8R5i1RF/rekawiczka)
-
-
-
