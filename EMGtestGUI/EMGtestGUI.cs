@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace EMG
   /// </summary>
   public partial class EMGtestGUI : Form
   {
+    private readonly bool DEBUG = true;
     private EMGchart[] chartTab = new EMGchart[16];
     private EMGforceSensor[] forceSensors = new EMGforceSensor[5];
     private Random rnd = new Random();
@@ -25,19 +27,23 @@ namespace EMG
     public EMGtestGUI()
     {
       InitializeComponent();
+      this.timerTEST.Stop();
 
       //
       int tmp = 0;
       int tmp2 = 0;
-      
+
       // Dodanie kontrolek do list
-      foreach (Control ctr in this.Controls)
+      foreach (Control ctr in this.panelCharts.Controls)
       {
         if (ctr is EMGchart)
         {
-          this.chartTab[15 - tmp] = (EMGchart)ctr;
+          this.chartTab[tmp] = (EMGchart)ctr;
           tmp++;
         }
+      }
+      foreach (Control ctr in this.Controls)
+      { 
         if (ctr is EMGforceSensor)
         {
           this.forceSensors[4 - tmp2] = (EMGforceSensor)ctr;
@@ -72,6 +78,40 @@ namespace EMG
       foreach (EMGforceSensor sensor in this.forceSensors)
       {
         sensor.setValue(Convert.ToSingle(this.rnd.NextDouble() * 100));
+      }
+    }
+
+    /// <summary>
+    /// Metoda odpowiadająca reakcji na naciśnięcie przycisku "Zrzut ekranu"
+    /// </summary>
+    /// <param name="sender">Obiekt wywołujący</param>
+    /// <param name="e">argumenty zdarzenia</param>
+    private void buttonScreenshot_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        string dir = Directory.GetCurrentDirectory().ToString() + "\\Screenshots\\";
+        Directory.CreateDirectory(dir);
+        Bitmap bmp = new Bitmap(this.Width, this.Height);
+        using (Graphics G = Graphics.FromImage(bmp))
+        {
+          G.Clear(Color.Black);
+        }
+
+        this.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
+        string tmp = DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + ".png";
+        string tmp2 = dir + tmp;
+        
+        bmp.Save(tmp2);
+        this.emgConsole.AddText("Zapisano jako " + tmp2.Replace(Directory.GetCurrentDirectory().ToString() + "\\", ""));
+      }
+      catch (Exception ex)
+      {
+        this.emgConsole.AddText("Nie udało się zapisać zrzutu");
+        if (this.DEBUG)
+        {
+          this.emgConsole.AddText("Exception in " + System.Reflection.MethodBase.GetCurrentMethod().Name.ToString() + ": " + ex.Message, true);
+        }
       }
     }
   }

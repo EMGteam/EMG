@@ -70,7 +70,7 @@ namespace EMG
     private float currentMaxValue = 4.0f;
     // private float currentMinValue = 4.0f;
     private int gridScrollOffset = 0;
-    private float averageValue = 0;
+    // private float averageValue = 0;
 
     private Border3DStyle borderStyle = Border3DStyle.Flat;
     private List<float> drawValues = new List<float>(EMGchartSettings.MAX_VALUE_COUNT);

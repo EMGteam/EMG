@@ -32,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EMGchart">
-      <HintPath>..\EMGchart\bin\Debug\EMGchart.dll</HintPath>
-    </Reference>
-    <Reference Include="EMGforceSensor">
-      <HintPath>..\EMGforceSensor\bin\Debug\EMGforceSensor.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -83,6 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EMGchart\EMGchart.csproj">
+      <Project>{ca405929-c845-45d9-b314-462e81adf11e}</Project>
+      <Name>EMGchart</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMGdebugConsole\EMGdebugConsole.csproj">
+      <Project>{d026280b-4ed3-4dea-a544-6ee1edcb25ae}</Project>
+      <Name>EMGdebugConsole</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMGforceSensor\EMGforceSensor.csproj">
+      <Project>{b92bb97f-a499-4a4f-8653-2448354bd786}</Project>
+      <Name>EMGforceSensor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

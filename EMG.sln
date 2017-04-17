@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMGforceSensor", "EMGforceS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMGtestGUI", "EMGtestGUI\EMGtestGUI.csproj", "{5D0C7E46-69E1-4DE3-98E5-CE9149CA6C8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMGdebugConsole", "EMGdebugConsole\EMGdebugConsole.csproj", "{D026280B-4ED3-4DEA-A544-6EE1EDCB25AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5D0C7E46-69E1-4DE3-98E5-CE9149CA6C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D0C7E46-69E1-4DE3-98E5-CE9149CA6C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D0C7E46-69E1-4DE3-98E5-CE9149CA6C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D026280B-4ED3-4DEA-A544-6EE1EDCB25AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D026280B-4ED3-4DEA-A544-6EE1EDCB25AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D026280B-4ED3-4DEA-A544-6EE1EDCB25AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D026280B-4ED3-4DEA-A544-6EE1EDCB25AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
