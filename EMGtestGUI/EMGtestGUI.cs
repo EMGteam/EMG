@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace EMG
 {
   /// <summary>
-  /// Klasa zawierająca definicje okna głównego aplikacji
+  /// Klasa zawierająca definicje okna głównego aplikacji.
   /// </summary>
   public partial class EMGtestGUI : Form
   {
