@@ -42,7 +42,7 @@ namespace EMG
           tmp++;
         }
       }
-      foreach (Control ctr in this.Controls)
+      foreach (Control ctr in this.panelSensors.Controls)
       { 
         if (ctr is EMGforceSensor)
         {
@@ -79,6 +79,16 @@ namespace EMG
       {
         sensor.setValue(Convert.ToSingle(this.rnd.NextDouble() * 100));
       }
+      if (this.progressBarPomiar.Value == this.progressBarPomiar.Maximum)
+      {
+        this.progressBarPomiar.Value = 0;
+      }
+      if (this.progressBarPauza.Value == this.progressBarPauza.Maximum)
+      {
+        this.progressBarPauza.Value = 0;
+      }
+      this.progressBarPomiar.Value++;
+      this.progressBarPauza.Value++;
     }
 
     /// <summary>
@@ -114,14 +124,15 @@ namespace EMG
         }
       }
     }
-  }
 
-  /// <summary>
-  /// Przestrzeń nazw dzielona przez wszystkie projekty
-  /// </summary>
-  [System.Runtime.CompilerServices.CompilerGenerated]
-  class NamespaceDoc
-  {
+    private void stripItemWyczysc_Click(object sender, EventArgs e)
+    {
+      foreach (EMGchart chart in this.chartTab)
+      {
+        chart.Clear();
+      }
+    }
 
+    private void stripItemSensory_CheckedChanged(object sender, EventArgs e) => EMGforceSensor.isDisabled = !this.stripItemSensory.Checked;
   }
 }

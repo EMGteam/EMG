@@ -18,51 +18,45 @@ namespace EMG
   public partial class EMGchart : UserControl
   {
     /// <summary>
-    /// Klasa zawierająca wspólne parametry wzystkich wykresów (Kolory etc.)
+    /// Ilość próbek na wykres
     /// </summary>
-    public static class EMGchartSettings
-    {
-      /// <summary>
-      /// Ilość próbek na wykres
-      /// </summary>
-      public static int MAX_VALUE_COUNT { get; } = 128;
-      /// <summary>
-      /// Odstęp rysowania linii siatki w pixelach
-      /// </summary>
-      public static int GRID_SPACING { get; } = 16;
-      /// <summary>
-      /// Przełącznik do rysowania, bądź nie, linii o średniej wartości punktów na wykresie
-      /// </summary>
-      public static bool DRAW_AVERAGE_LINE { get; } = false;
-      /// <summary>
-      /// Przełącznik służacy załączeniu/wyłączeniu rysowania siatki
-      /// </summary>
-      public static bool SHOW_GRID_LINE { get; } = false;
-      /// <summary>
-      /// Zdefiniowany mazak z kolorem dla linii przebiegu
-      /// </summary>
-      public static Pen linePen { get; } = new Pen(Color.Tomato);
-      /// <summary>
-      /// Mazak definiujący kolor siatki
-      /// </summary>
-      public static Pen gridPen { get; } = new Pen(Color.Black);
-      /// <summary>
-      /// Kolor dla napisów na wykresach
-      /// </summary>
-      public static Color lineColor { get; } = Color.Black;
-      /// <summary>
-      /// Kolor tła wykresu
-      /// </summary>
-      public static Color backgroundColor { get; } = Color.WhiteSmoke;
-      /// <summary>
-      /// Kolor dla linii y = 0, ale chyba jej nie potrzebujemy
-      /// </summary>
-      public static Pen lineZeroPen { get; } = new Pen(Color.Tomato);
-      /// <summary>
-      /// Zmiana trybu rysowania - z timerem (aktualizacja co X ms) lub bez (aktualizacja co próbkę)
-      /// </summary>
-      public static TimerMode timerMode { get; set; } = TimerMode.Disabled;
-    }
+    public static int MAX_VALUE_COUNT { get; } = 128;
+    /// <summary>
+    /// Odstęp rysowania linii siatki w pixelach
+    /// </summary>
+    public static int GRID_SPACING { get; } = 16;
+    /// <summary>
+    /// Przełącznik do rysowania, bądź nie, linii o średniej wartości punktów na wykresie
+    /// </summary>
+    public static bool DRAW_AVERAGE_LINE { get; } = false;
+    /// <summary>
+    /// Przełącznik służacy załączeniu/wyłączeniu rysowania siatki
+    /// </summary>
+    public static bool SHOW_GRID_LINE { get; } = false;
+    /// <summary>
+    /// Zdefiniowany mazak z kolorem dla linii przebiegu
+    /// </summary>
+    public static Pen linePen { get; } = new Pen(Color.Tomato);
+    /// <summary>
+    /// Mazak definiujący kolor siatki
+    /// </summary>
+    public static Pen gridPen { get; } = new Pen(Color.Black);
+    /// <summary>
+    /// Kolor dla napisów na wykresach
+    /// </summary>
+    public static Color lineColor { get; } = Color.Black;
+    /// <summary>
+    /// Kolor tła wykresu
+    /// </summary>
+    public static Color backgroundColor { get; } = Color.WhiteSmoke;
+    /// <summary>
+    /// Kolor dla linii y = 0, ale chyba jej nie potrzebujemy
+    /// </summary>
+    public static Pen lineZeroPen { get; } = new Pen(Color.Tomato);
+    /// <summary>
+    /// Zmiana trybu rysowania - z timerem (aktualizacja co X ms) lub bez (aktualizacja co próbkę)
+    /// </summary>
+    public static TimerMode timerMode { get; set; } = TimerMode.Disabled;
 
     public int chartID = 0;
     private int visibleValues = 0;
@@ -73,7 +67,7 @@ namespace EMG
     // private float averageValue = 0;
 
     private Border3DStyle borderStyle = Border3DStyle.Flat;
-    private List<float> drawValues = new List<float>(EMGchartSettings.MAX_VALUE_COUNT);
+    private List<float> drawValues = new List<float>(MAX_VALUE_COUNT);
     private Queue<float> waitinValues = new Queue<float>();
 
     /// <summary>
@@ -128,7 +122,7 @@ namespace EMG
       this.ChartAppend(value);
 
       // Dla trybu bez timera odświeżanie wykresu co nową probkę
-      if (EMGchartSettings.timerMode == TimerMode.Disabled)
+      if (EMGchart.timerMode == TimerMode.Disabled)
       {
         this.Invalidate();
       }
@@ -142,15 +136,15 @@ namespace EMG
     {
       this.drawValues.Insert(0, value);
 
-      if (this.drawValues.Count > EMGchartSettings.MAX_VALUE_COUNT)
+      if (this.drawValues.Count > MAX_VALUE_COUNT)
       {
-        this.drawValues.RemoveAt(EMGchartSettings.MAX_VALUE_COUNT);
+        this.drawValues.RemoveAt(MAX_VALUE_COUNT);
       }
 
       this.gridScrollOffset += this.valueSpacing;
-      if (this.gridScrollOffset > EMGchartSettings.GRID_SPACING)
+      if (this.gridScrollOffset > GRID_SPACING)
       {
-        this.gridScrollOffset = this.gridScrollOffset % EMGchartSettings.GRID_SPACING;
+        this.gridScrollOffset = this.gridScrollOffset % GRID_SPACING;
       }
     }
 
@@ -217,7 +211,7 @@ namespace EMG
       Point currPoint = new Point();
 
       /* 
-      if (this.visibleValues > 0 && EMGchartSettings.DRAW_AVERAGE_LINE)
+      if (this.visibleValues > 0 && EMGchart.DRAW_AVERAGE_LINE)
       {
         this.averageValue = 0;
         this.DrawAverageLine(grs);
@@ -229,12 +223,12 @@ namespace EMG
         currPoint.X = prevPoint.X - this.valueSpacing;
         currPoint.Y = this.CalcVerticalPosition(this.drawValues[i]);
 
-        grs.DrawLine(EMGchartSettings.linePen, prevPoint, currPoint);
+        grs.DrawLine(linePen, prevPoint, currPoint);
 
         prevPoint = currPoint;
       }
 
-      SolidBrush sb = new SolidBrush(EMGchartSettings.lineColor);
+      SolidBrush sb = new SolidBrush(lineColor);
       grs.DrawString(this.chartID.ToString(), this.Font, sb, 4.0f, 2.0f);
 
       ControlPaint.DrawBorder3D(grs, 0, 0, this.Width, this.Height, this.borderStyle);
@@ -252,7 +246,7 @@ namespace EMG
       this.averageValue = this.averageValue / this.visibleValues;
 
       int vertPosition = this.CalcVerticalPosition(this.averageValue);
-      grs.DrawLine(EMGchartSettings.linePen, 0, vertPosition, this.Width, vertPosition);
+      grs.DrawLine(EMGchart.linePen, 0, vertPosition, this.Width, vertPosition);
     } 
     */
 
@@ -264,23 +258,23 @@ namespace EMG
     {
       Debug.WriteLine("DrawBackgroundAndGrid()");
       Rectangle baseRectangle = new Rectangle(0, 0, this.Width, this.Height);
-      using (Brush gradientBrush = new LinearGradientBrush(baseRectangle, EMGchartSettings.backgroundColor, EMGchartSettings.backgroundColor, LinearGradientMode.Vertical))
+      using (Brush gradientBrush = new LinearGradientBrush(baseRectangle, backgroundColor, backgroundColor, LinearGradientMode.Vertical))
       {
         grs.FillRectangle(gradientBrush, baseRectangle);
       }
 
-      if (EMGchartSettings.SHOW_GRID_LINE)
+      if (SHOW_GRID_LINE)
       {
-        for (int i = this.Width - this.gridScrollOffset; i >= 0; i -= EMGchartSettings.GRID_SPACING)
-        // for (int i = 0; i >= this.Width; i += EMGchartSettings.GRID_SPACING)
+        for (int i = this.Width - this.gridScrollOffset; i >= 0; i -= GRID_SPACING)
+        // for (int i = 0; i >= this.Width; i += EMGchart.GRID_SPACING)
         {
-          grs.DrawLine(EMGchartSettings.gridPen, i, 0, i, this.Height);
+          grs.DrawLine(gridPen, i, 0, i, this.Height);
         }
-        for (int i = 0; i < this.Height; i += EMGchartSettings.GRID_SPACING)
+        for (int i = 0; i < this.Height; i += GRID_SPACING)
         {
-          grs.DrawLine(EMGchartSettings.gridPen, 0, i, this.Width, i);
+          grs.DrawLine(gridPen, 0, i, this.Width, i);
         }
-        grs.DrawLine(EMGchartSettings.lineZeroPen, 0, this.Height / 2, this.Width, this.Height / 2);
+        grs.DrawLine(lineZeroPen, 0, this.Height / 2, this.Width, this.Height / 2);
       }
     }
 

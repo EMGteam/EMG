@@ -34,9 +34,8 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.Name = "EMGforceSensor";
-      this.Size = new System.Drawing.Size(62, 62);
+      this.Size = new System.Drawing.Size(64, 64);
       this.ResumeLayout(false);
 
     }

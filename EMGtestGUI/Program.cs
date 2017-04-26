@@ -14,9 +14,17 @@ namespace EMG
     [STAThread]
     static void Main()
     {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new EMGtestGUI());
+      try
+      {
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new EMGtestGUI());
+      }
+      catch (System.Exception e)
+      {
+        MessageBox.Show(e.Message, ".dll not found");
+      }
     }
   }
+
 }
