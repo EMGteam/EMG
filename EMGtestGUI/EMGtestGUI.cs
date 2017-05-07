@@ -16,6 +16,7 @@ namespace EMG
   /// </summary>
   public partial class EMGtestGUI : Form
   {
+    private EMGthread emgThread = new EMGthread();
     private readonly bool DEBUG = true;
     private EMGchart[] chartTab = new EMGchart[16];
     private EMGforceSensor[] forceSensors = new EMGforceSensor[5];
@@ -89,6 +90,10 @@ namespace EMG
       }
       this.progressBarPomiar.Value++;
       this.progressBarPauza.Value++;
+
+      this.emgConsole.AddText(this.emgThread.counter.ToString() + " " + DateTime.Now.ToString("ss:fff"));
+      System.Threading.Thread.Sleep(1);
+      this.emgConsole.AddText(this.emgThread.counter.ToString() + " " + DateTime.Now.ToString("ss:fff"));
     }
 
     /// <summary>

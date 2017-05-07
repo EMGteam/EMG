@@ -122,7 +122,9 @@ namespace EMG
       this.ChartAppend(value);
 
       // Dla trybu bez timera odświeżanie wykresu co nową probkę
+#pragma warning disable CS0436 // Typ powoduje konflikt z zaimportowanym typem
       if (EMGchart.timerMode == TimerMode.Disabled)
+#pragma warning restore CS0436 // Typ powoduje konflikt z zaimportowanym typem
       {
         this.Invalidate();
       }
