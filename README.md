@@ -73,14 +73,13 @@ Jak ktoś nie używał wcześcniej Visuala i CeHaszy
 Co jest
 * [x] Rysowanie wykresów
 * [x] Wizualizacja siły (kwadratowe kontrolki, ale można dowolnie zmieniać ich kształt -> byle nie za małe by tekst się mieścił :P)
+* [x] Ładna ikonka (rozdzielczości na podstawie dotychczasowej)
 
 Czego brak
 * [ ] Obsługa karty - to niech poczeka aż ją dostaniemy, pliki *.dll z obsługą karty teoretycznie znalazłem 
 * [ ] Obsługa samej procedury pomiarowej - to potem
 * [ ] No i zapis do pliku/format - też potem :P
 * [ ] Trzeba też uzupełnić funkcjonalność okna o jakieś *menu* (nie z żarciem...)
-* [ ] Trzeba skleić ładną ikonkę - najlepiej trzymać się tego:
-> Application icons and Control Panel items: The full set includes 16x16, 32x32, 48x48, and 256x256 (code scales between 32 and 256).
 
 ## Postanowienia końcowe
 [Link do Trello](https://trello.com/b/E8R5i1RF/rekawiczka)
