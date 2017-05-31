@@ -4,39 +4,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Forms;
 
 namespace EMG
 {
   class EMGthread
   {
-    public Int32 error = 0;
-    public Int32 read = 0, totalRead = 0;
-    public char[] errBuff = new char[2048];
-    public int counter = 0;
-    public double[] data = new double[16];
+    public Multimedia.Timer readDataTimer = new Multimedia.Timer();
+    public delegate Automation.BDaq.ErrorCode delegejt(int chStart, int chCount, double[] dataScaled);
+    public delegejt delGate;
+    public double[] data = new double[32];
+    public double[,] dataHistory = new double[2000, 64];
+    
+    private int dataInd = 0;
+    private Random rnd = new Random();
 
+    public const int dataPerMeasurment = 2000;
     public const int startChannel = 0;
     public const int channelCount = 32;
-
-    public Multimedia.Timer readDataTimer = new Multimedia.Timer();
 
     public EMGthread()
     {
       this.readDataTimer.Resolution = 1;
       this.readDataTimer.Period = 1;
-      this.readDataTimer.Start();
       this.readDataTimer.Mode = Multimedia.TimerMode.Periodic;
-      this.readDataTimer.Tick += new System.EventHandler(this.read_data);
     }
 
-    public void read_data(object sender, EventArgs e)
+    public void ReadDataFromPCIE(object sender, EventArgs e)
     {
-      for (int i = 0; i < 16/*ilosc_danych*16*/; i++)
+      try
       {
-        this.data[i] = this.counter;
+        this.delGate(EMGthread.startChannel, EMGthread.channelCount, this.data);
+        for (int i = 0; i < EMGthread.channelCount; i++)
+        {
+          dataHistory[dataInd, i] = this.data[i];
+        }
+        dataInd++;
+        if (dataInd >= EMGthread.dataPerMeasurment)
+        {
+          dataInd = 0;
+          this.readDataTimer.Stop();
+        }
       }
-      this.counter++;
-      //qDebug() << ilosc_danych;
+      catch (System.Exception err)
+      {
+        MessageBox.Show(err.Message);
+      }
+    }
+
+    public void ReadRandomData(object sender, EventArgs e)
+    {
+      try
+      {
+        for (int i = EMGthread.startChannel; i < EMGthread.channelCount; i++)
+        {
+          this.data[i] = 1.5 * Math.Sin((double)dataInd / 318.5) + Math.Sin((double)dataInd / 55) + Math.Sin((double)dataInd/78);
+        }
+        for (int i = 0; i < EMGthread.channelCount; i++)
+        {
+          dataHistory[dataInd, i] = this.data[i];
+        }
+        dataInd++;
+        if (dataInd >= EMGthread.dataPerMeasurment)
+        {
+          dataInd = 0;
+          this.readDataTimer.Stop();
+        }
+      }
+      catch (System.Exception err)
+      {
+        MessageBox.Show(err.Message);
+      }
     }
   }
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace EMG
 {
@@ -21,6 +23,8 @@ namespace EMG
     private EMGchart[] chartTab = new EMGchart[16];
     private EMGforceSensor[] forceSensors = new EMGforceSensor[5];
     private Random rnd = new Random();
+    private string fileName = "osoba1test";
+    private int fileIndex = 1;
 
     /// <summary>
     /// Konstruktor
@@ -28,13 +32,9 @@ namespace EMG
     public EMGtestGUI()
     {
       InitializeComponent();
-      this.timerTEST.Stop();
+      this.timerTEST.Interval = 25;
 
-      //
       int tmp = 0;
-      int tmp2 = 0;
-
-      // Dodanie kontrolek do list
       foreach (Control ctr in this.panelCharts.Controls)
       {
         if (ctr is EMGchart)
@@ -43,25 +43,45 @@ namespace EMG
           tmp++;
         }
       }
+      tmp = 0;
       foreach (Control ctr in this.panelSensors.Controls)
       { 
         if (ctr is EMGforceSensor)
         {
-          this.forceSensors[4 - tmp2] = (EMGforceSensor)ctr;
-          tmp2++;
+          this.forceSensors[tmp] = (EMGforceSensor)ctr;
+          tmp++;
         }
       }
 
-      for (int i = 0; i < 16; i++)
+      // Pierwszy wykres jest kijowy
+      // this.chartTab[0].CurrentMaxValue = 10.0f;
+
+      for (int i = 0; i < this.chartTab.Count(); i++)
       {
         this.chartTab[i].chartID = i + 1;
       }
-      this.timerTEST.Interval = 25;
-      this.timerTEST.Start();
+      for (int i = 0; i < this.forceSensors.Count(); i++)
+      {
+        this.forceSensors[i].sensorID = i + 1;
+      }
 
-      Graphics GRS = this.CreateGraphics();
-      // Obraz ręki
-      GRS.Dispose();
+      if (!this.instantAiCtrl1.Initialized)
+      {
+        this.emgConsole.AddText("Nie udało się połączyć z karta pomiarową", true);
+        this.emgConsole.AddText("RANDOM", true);
+        this.emgThread.readDataTimer.Stopped += new System.EventHandler(this.SaveToFile);
+        this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadRandomData);
+      }
+      else
+      {
+        this.emgConsole.AddText("Połączono z kartą pomiarową", true);
+        this.emgThread.readDataTimer.Stopped += new System.EventHandler(this.SaveToFile);
+        this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadDataFromPCIE);
+        emgThread.delGate = this.instantAiCtrl1.Read;
+      }
+
+      this.timerTEST.Start();
+      this.emgThread.readDataTimer.Start();
     }
     
     /// <summary>
@@ -72,14 +92,22 @@ namespace EMG
     /// <param name="e">Argumenty zdarzenia</param>
     private void timerTEST_Tick(object sender, EventArgs e)
     {
-      foreach (EMGchart chart in this.chartTab)
+      for (int i = 0; i < this.chartTab.Count(); i++)
       {
-        chart.AddValue(Convert.ToSingle((this.rnd.NextDouble() * 8) - 4));
+        this.chartTab[i].AddValue(Convert.ToSingle(this.emgThread.data[i]));
       }
-      foreach (EMGforceSensor sensor in this.forceSensors)
+
+      for (int i = 0; i < this.forceSensors.Count(); i++)
       {
-        sensor.setValue(Convert.ToSingle(this.rnd.NextDouble() * 100));
+        this.forceSensors[i].setValue(Convert.ToSingle(this.emgThread.data[i]));
       }
+
+      /* this.sensorPinky.setValue(Convert.ToSingle(this.emgThread.data[18]));
+      this.sensorThumb.setValue(Convert.ToSingle(this.emgThread.data[19]));
+      this.sensorRing.setValue(Convert.ToSingle(this.emgThread.data[20]));
+      this.sensorMiddle.setValue(Convert.ToSingle(this.emgThread.data[21]));
+      this.sensorIndex.setValue(Convert.ToSingle(this.emgThread.data[22])); */
+
       if (this.progressBarPomiar.Value == this.progressBarPomiar.Maximum)
       {
         this.progressBarPomiar.Value = 0;
@@ -90,10 +118,6 @@ namespace EMG
       }
       this.progressBarPomiar.Value++;
       this.progressBarPauza.Value++;
-
-      this.emgConsole.AddText(this.emgThread.counter.ToString() + " " + DateTime.Now.ToString("ss:fff"));
-      System.Threading.Thread.Sleep(1);
-      this.emgConsole.AddText(this.emgThread.counter.ToString() + " " + DateTime.Now.ToString("ss:fff"));
     }
 
     /// <summary>
@@ -127,6 +151,48 @@ namespace EMG
         {
           this.emgConsole.AddText("Exception in " + System.Reflection.MethodBase.GetCurrentMethod().Name.ToString() + ": " + ex.Message, true);
         }
+      }
+    }
+
+    private void SaveToFile(object sender, EventArgs e)
+    {
+      try
+      {
+        Directory.CreateDirectory("dane");
+        string tmpName = this.fileName + this.fileIndex.ToString() + ".txt";
+        tmpName = Path.GetFullPath(tmpName).Replace(tmpName, "") + "dane\\" + tmpName;
+
+        using (FileStream fs = new FileStream(tmpName, FileMode.Create, FileAccess.Write))
+        using (StreamWriter outFile = new StreamWriter(fs, Encoding.ASCII))
+        {
+          try
+          {
+            this.emgConsole.AddText("Rozpoczęto zapis danych do pliku", true);
+            for (int i = 0; i < EMGthread.dataPerMeasurment; i++)
+            {
+              outFile.Write((i + 1).ToString() + ": ");
+              for (int j = 0; j < EMGthread.channelCount - 1; j++)
+              {
+                outFile.Write(this.emgThread.dataHistory[i, j].ToString() + ", ");
+              }
+              outFile.Write(this.emgThread.dataHistory[i, EMGthread.channelCount - 1] + Environment.NewLine);
+            }
+            this.emgConsole.AddText("Zapisano dane do pliku: " + tmpName, true);
+          }
+          catch (Exception ex)
+          {
+            this.emgConsole.AddText(ex.Message, true);
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        this.emgConsole.AddText(ex.Message, true);
+      }
+      finally
+      {
+        this.fileIndex++;
+        this.emgThread.readDataTimer.Start();
       }
     }
 

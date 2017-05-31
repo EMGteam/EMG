@@ -60,8 +60,23 @@ namespace EMG
 
     public int chartID = 0;
     private int visibleValues = 0;
-    private int valueSpacing = 2;
-    private float currentMaxValue = 4.0f;
+    private int valueSpacing = 3;
+    private float currentMaxValue = 6f;
+    private float currentMaxValueDoubled = 12f;
+
+    public float CurrentMaxValue
+    {
+      get
+      {
+        return this.currentMaxValue;
+      }
+      set
+      {
+        this.currentMaxValue = value;
+        this.currentMaxValueDoubled = value * 2;
+      }
+    }
+
     // private float currentMinValue = 4.0f;
     private int gridScrollOffset = 0;
     // private float averageValue = 0;
@@ -177,7 +192,7 @@ namespace EMG
     private int CalcVerticalPosition(float value)
     {
       value += this.currentMaxValue;
-      value *= 8;
+      value *= 64/11;
       value = 64 - value;
       return Convert.ToInt32(Math.Round(value));
     }

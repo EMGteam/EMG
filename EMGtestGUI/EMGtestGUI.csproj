@@ -53,6 +53,21 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Automation.BDaq4, Version=4.0.0.0, Culture=neutral, PublicKeyToken=463f5928d60183a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Advantech\DAQNavi\Automation.BDaq\4.0.0.0\Automation.BDaq4.dll</HintPath>
+    </Reference>
+    <Reference Include="EMGmodel3D">
+      <HintPath>..\EMGmodel3D\bin\Debug\EMGmodel3D.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\OpenTK.GLControl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -139,20 +154,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- Code to merge the assemblies into one:setup.exe -->
+  <!-- Code to merge the assemblies into one: EMGallInOne.exe
   <UsingTask TaskName="ILMerge.MSBuild.Tasks.ILMerge" AssemblyFile="$(SolutionDir)\packages\ILMerge.MSBuild.Tasks.1.0.0.3\tools\ILMerge.MSBuild.Tasks.dll" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MergeAsm Include="$(OutputPath)$(TargetFileName)" />
       <MergeAsm Include="$(OutputPath)*.dll" />
-      <!-- <MergeAsm Include="$(OutputPath)EMGchart.dll" />
-      <MergeAsm Include="$(OutputPath)EMGforceSensor.dll" />
-      <MergeAsm Include="$(OutputPath)EMGdebugConsole.dll" /> -->
     </ItemGroup>
     <PropertyGroup>
       <MergedAssembly>$(ProjectDir)$(OutDir)EMGallInOne.exe</MergedAssembly>
     </PropertyGroup>
     <Message Text="ILMerge @(MergeAsm) -&gt; $(MergedAssembly)" Importance="high" />
-    <ILMerge InputAssemblies="@(MergeAsm)" OutputFile="$(MergedAssembly)" TargetKind="SameAsPrimaryAssembly" />
-  </Target>
+    <ILMerge InputAssemblies="@(MergeAsm)" OutputFile="$(MergedAssembly)" TargetKind="SameAsPrimaryAssembly" /> 
+  </Target> -->
 </Project>

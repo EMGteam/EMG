@@ -33,8 +33,7 @@
       // 
       // consoleTextBox
       // 
-      this.consoleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top 
-            | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.consoleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.consoleTextBox.BackColor = System.Drawing.SystemColors.WindowText;
@@ -46,14 +45,14 @@
       this.consoleTextBox.Size = new System.Drawing.Size(309, 210);
       this.consoleTextBox.TabIndex = 0;
       this.consoleTextBox.Text = "";
-      this.consoleTextBox.TextChanged += new System.EventHandler(this.consoleTextBox_AnyEvent);
-      this.consoleTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.consoleTextBox_AnyMouseEvent);
-      this.consoleTextBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.consoleTextBox_AnyMouseEvent);
-      this.consoleTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.consoleTextBox_AnyMouseEvent);
       this.consoleTextBox.Click += new System.EventHandler(this.consoleTextBox_AnyEvent);
+      this.consoleTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.consoleTextBox_AnyMouseEvent);
       this.consoleTextBox.CursorChanged += new System.EventHandler(this.consoleTextBox_AnyEvent);
+      this.consoleTextBox.TextChanged += new System.EventHandler(this.consoleTextBox_AnyEvent);
       this.consoleTextBox.Enter += new System.EventHandler(this.consoleTextBox_AnyEvent);
       this.consoleTextBox.GotFocus += new System.EventHandler(this.consoleTextBox_AnyEvent);
+      this.consoleTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.consoleTextBox_AnyMouseEvent);
+      this.consoleTextBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.consoleTextBox_AnyMouseEvent);
       this.consoleTextBox.Resize += new System.EventHandler(this.consoleTextBox_AnyEvent);
       // 
       // EMGdebugConsole

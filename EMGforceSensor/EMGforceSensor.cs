@@ -15,9 +15,9 @@ namespace EMG
   /// </summary>
   public partial class EMGforceSensor : UserControl
   {
-
+    public int sensorID = 0;
     public static float MIN_FORCE = 0f;
-    public static float MAX_FORCE = 100f;
+    public static float MAX_FORCE = 6f;
     public static Color textColor = Color.White;
     public static bool _isDisabled = false;
 
@@ -57,9 +57,6 @@ namespace EMG
     /// <param name="value">Przekazywana wartość</param>
     public void setValue(float value)
     {
-      // this.BackColor = getColor(Convert.ToInt32(value));
-      // this.ForeColor = getColor(Convert.ToInt32(value));
-
       Graphics formGraphics;
       formGraphics = this.CreateGraphics();
       formGraphics.Clear(SystemColors.Control);
@@ -90,11 +87,11 @@ namespace EMG
     {
       SortedDictionary<int, Color> colorDict = new SortedDictionary<int, Color>
       {
-        {  Convert.ToInt32(0), Color.Green },
+        {  Convert.ToInt32(0), Color.Red },
         // s{ Convert.ToInt32(0.25 * EMGforceSensor.MAX_FORCE), Color.DarkGreen },
         { Convert.ToInt32(0.5 * EMGforceSensor.MAX_FORCE), Color.Yellow },
         // { Convert.ToInt32(0.75 * EMGforceSensor.MAX_FORCE), Color.Orange },
-        { Convert.ToInt32(EMGforceSensor.MAX_FORCE), Color.Red }
+        { Convert.ToInt32(EMGforceSensor.MAX_FORCE), Color.Green }
       };
 
       KeyValuePair<int, Color> kvp_previous = new KeyValuePair<int, Color>(-1, Color.Black);

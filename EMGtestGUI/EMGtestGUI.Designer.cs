@@ -70,6 +70,7 @@
       this.menuPomoc = new System.Windows.Forms.ToolStripMenuItem();
       this.stripItemHelp = new System.Windows.Forms.ToolStripMenuItem();
       this.stripItemAbout = new System.Windows.Forms.ToolStripMenuItem();
+      this.instantAiCtrl1 = new Automation.BDaq.InstantAiCtrl(this.components);
       this.panelDebugConsole.SuspendLayout();
       this.panelCharts.SuspendLayout();
       this.panelSensors.SuspendLayout();
@@ -94,7 +95,7 @@
       // emgChart15
       // 
       this.emgChart15.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart15.Location = new System.Drawing.Point(263, 405);
+      this.emgChart15.Location = new System.Drawing.Point(3, 472);
       this.emgChart15.Name = "emgChart15";
       this.emgChart15.Size = new System.Drawing.Size(257, 64);
       this.emgChart15.TabIndex = 15;
@@ -102,7 +103,7 @@
       // emgChart14
       // 
       this.emgChart14.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart14.Location = new System.Drawing.Point(263, 338);
+      this.emgChart14.Location = new System.Drawing.Point(263, 405);
       this.emgChart14.Name = "emgChart14";
       this.emgChart14.Size = new System.Drawing.Size(257, 64);
       this.emgChart14.TabIndex = 14;
@@ -110,7 +111,7 @@
       // emgChart13
       // 
       this.emgChart13.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart13.Location = new System.Drawing.Point(263, 271);
+      this.emgChart13.Location = new System.Drawing.Point(3, 405);
       this.emgChart13.Name = "emgChart13";
       this.emgChart13.Size = new System.Drawing.Size(257, 64);
       this.emgChart13.TabIndex = 13;
@@ -118,7 +119,7 @@
       // emgChart12
       // 
       this.emgChart12.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart12.Location = new System.Drawing.Point(263, 204);
+      this.emgChart12.Location = new System.Drawing.Point(263, 338);
       this.emgChart12.Name = "emgChart12";
       this.emgChart12.Size = new System.Drawing.Size(257, 64);
       this.emgChart12.TabIndex = 12;
@@ -126,7 +127,7 @@
       // emgChart11
       // 
       this.emgChart11.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart11.Location = new System.Drawing.Point(263, 137);
+      this.emgChart11.Location = new System.Drawing.Point(3, 338);
       this.emgChart11.Name = "emgChart11";
       this.emgChart11.Size = new System.Drawing.Size(257, 64);
       this.emgChart11.TabIndex = 11;
@@ -134,7 +135,7 @@
       // emgChart10
       // 
       this.emgChart10.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart10.Location = new System.Drawing.Point(263, 70);
+      this.emgChart10.Location = new System.Drawing.Point(263, 271);
       this.emgChart10.Name = "emgChart10";
       this.emgChart10.Size = new System.Drawing.Size(257, 64);
       this.emgChart10.TabIndex = 10;
@@ -142,7 +143,7 @@
       // emgChart9
       // 
       this.emgChart9.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart9.Location = new System.Drawing.Point(263, 3);
+      this.emgChart9.Location = new System.Drawing.Point(3, 271);
       this.emgChart9.Name = "emgChart9";
       this.emgChart9.Size = new System.Drawing.Size(257, 64);
       this.emgChart9.TabIndex = 9;
@@ -150,7 +151,7 @@
       // emgChart8
       // 
       this.emgChart8.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart8.Location = new System.Drawing.Point(3, 472);
+      this.emgChart8.Location = new System.Drawing.Point(263, 204);
       this.emgChart8.Name = "emgChart8";
       this.emgChart8.Size = new System.Drawing.Size(257, 64);
       this.emgChart8.TabIndex = 8;
@@ -158,7 +159,7 @@
       // emgChart7
       // 
       this.emgChart7.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart7.Location = new System.Drawing.Point(3, 405);
+      this.emgChart7.Location = new System.Drawing.Point(3, 204);
       this.emgChart7.Name = "emgChart7";
       this.emgChart7.Size = new System.Drawing.Size(257, 64);
       this.emgChart7.TabIndex = 7;
@@ -166,7 +167,7 @@
       // emgChart6
       // 
       this.emgChart6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart6.Location = new System.Drawing.Point(3, 338);
+      this.emgChart6.Location = new System.Drawing.Point(263, 137);
       this.emgChart6.Name = "emgChart6";
       this.emgChart6.Size = new System.Drawing.Size(257, 64);
       this.emgChart6.TabIndex = 6;
@@ -174,7 +175,7 @@
       // emgChart5
       // 
       this.emgChart5.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart5.Location = new System.Drawing.Point(3, 271);
+      this.emgChart5.Location = new System.Drawing.Point(3, 137);
       this.emgChart5.Name = "emgChart5";
       this.emgChart5.Size = new System.Drawing.Size(257, 64);
       this.emgChart5.TabIndex = 5;
@@ -182,7 +183,7 @@
       // emgChart4
       // 
       this.emgChart4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart4.Location = new System.Drawing.Point(3, 204);
+      this.emgChart4.Location = new System.Drawing.Point(263, 70);
       this.emgChart4.Name = "emgChart4";
       this.emgChart4.Size = new System.Drawing.Size(257, 64);
       this.emgChart4.TabIndex = 4;
@@ -190,7 +191,7 @@
       // emgChart3
       // 
       this.emgChart3.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart3.Location = new System.Drawing.Point(3, 137);
+      this.emgChart3.Location = new System.Drawing.Point(3, 70);
       this.emgChart3.Name = "emgChart3";
       this.emgChart3.Size = new System.Drawing.Size(257, 64);
       this.emgChart3.TabIndex = 3;
@@ -198,7 +199,7 @@
       // emgChart2
       // 
       this.emgChart2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-      this.emgChart2.Location = new System.Drawing.Point(3, 70);
+      this.emgChart2.Location = new System.Drawing.Point(263, 3);
       this.emgChart2.Name = "emgChart2";
       this.emgChart2.Size = new System.Drawing.Size(257, 64);
       this.emgChart2.TabIndex = 2;
@@ -379,7 +380,7 @@
       this.stripMenu.Location = new System.Drawing.Point(0, 0);
       this.stripMenu.Name = "stripMenu";
       this.stripMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-      this.stripMenu.Size = new System.Drawing.Size(944, 23);
+      this.stripMenu.Size = new System.Drawing.Size(944, 21);
       this.stripMenu.TabIndex = 28;
       this.stripMenu.Text = "Menu";
       // 
@@ -451,6 +452,10 @@
       this.stripItemAbout.Size = new System.Drawing.Size(103, 22);
       this.stripItemAbout.Text = "About";
       // 
+      // instantAiCtrl1
+      // 
+      this.instantAiCtrl1._StateStream = ((Automation.BDaq.DeviceStateStreamer)(resources.GetObject("instantAiCtrl1._StateStream")));
+      // 
       // EMGtestGUI
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,5 +524,8 @@
     private System.Windows.Forms.ToolStripMenuItem stripItemUstawienia;
     private System.Windows.Forms.ToolStripMenuItem stripItemWyczysc;
     private System.Windows.Forms.ToolStripMenuItem stripItemSensory;
+
+    // private Automation.BDaq.BufferedAiCtrl bufferedAiCtrl1;
+    private Automation.BDaq.InstantAiCtrl instantAiCtrl1;
   }
 }

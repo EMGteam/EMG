@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace EMG
 {
   static class Program
   {
+    private static EMGtestGUI EMGformGUI;
     /// <summary>
     /// Główny punkt wejścia dla aplikacji.
     /// </summary>
@@ -18,11 +20,13 @@ namespace EMG
       {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new EMGtestGUI());
+        
+        EMGformGUI = new EMGtestGUI();
+        Application.Run(EMGformGUI);
       }
-      catch (System.Exception e)
+      catch (Exception e)
       {
-        MessageBox.Show(e.Message, ".dll not found");
+        MessageBox.Show(e.Message);
       }
     }
   }
