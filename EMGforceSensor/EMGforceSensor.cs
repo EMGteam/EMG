@@ -71,7 +71,7 @@ namespace EMG
       formGraphics.FillRectangle(myBrush, new Rectangle(0, 0, this.Width, this.Height));
 
       SolidBrush sb = new SolidBrush(EMGforceSensor.textColor);
-      formGraphics.DrawString(Convert.ToInt32(value).ToString(), this.Font, sb, 1.0f, 1.0f);
+      formGraphics.DrawString(Convert.ToInt32(this.sensorID).ToString(), this.Font, sb, 1.0f, 1.0f);
 
       sb.Dispose();
       myBrush.Dispose();

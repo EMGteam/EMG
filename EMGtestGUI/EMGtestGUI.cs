@@ -21,9 +21,8 @@ namespace EMG
     private EMGthread emgThread = new EMGthread();
     private readonly bool DEBUG = true;
     private EMGchart[] chartTab = new EMGchart[16];
-    private EMGforceSensor[] forceSensors = new EMGforceSensor[5];
+    private EMGforceSensor[] forceSensors = new EMGforceSensor[24];
     private Random rnd = new Random();
-    private string fileName = "osoba1test";
     private int fileIndex = 1;
 
     /// <summary>
@@ -49,8 +48,17 @@ namespace EMG
         if (ctr is EMGforceSensor)
         {
           this.forceSensors[tmp] = (EMGforceSensor)ctr;
+          this.forceSensors[tmp].sensorID = ((EMGforceSensor)ctr).TabIndex;
           tmp++;
         }
+      }
+
+      for (int i = 0; i < this.forceSensors.Count()/2; i++)
+      {
+        var tmpSensor = this.forceSensors[i];
+        this.forceSensors[i].TabIndex += 2;
+        this.forceSensors[i] = this.forceSensors[this.forceSensors.Count() - i - 1];
+        this.forceSensors[this.forceSensors.Count() - i - 1] = tmpSensor;
       }
 
       // Pierwszy wykres jest kijowy
@@ -69,17 +77,22 @@ namespace EMG
       {
         this.emgConsole.AddText("Nie udało się połączyć z karta pomiarową", true);
         this.emgConsole.AddText("RANDOM", true);
-        this.emgThread.readDataTimer.Stopped += new System.EventHandler(this.SaveToFile);
+        this.emgThread.ReadyToSave += new EMGthread.SaveDelgejt(this.SaveToFile);
         this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadRandomData);
       }
       else
       {
         this.emgConsole.AddText("Połączono z kartą pomiarową", true);
-        this.emgThread.readDataTimer.Stopped += new System.EventHandler(this.SaveToFile);
-        this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadDataFromPCIE);
+        this.emgThread.ReadyToSave += new EMGthread.SaveDelgejt(this.SaveToFile);
+        this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadDataContinouslyFromPCIE);
         emgThread.delGate = this.instantAiCtrl1.Read;
       }
 
+      this.folderNameTextBox.Text = "dane\\osoba_X\\ruch_Y\\";
+      this.PauseTimeTextBox.Text = 3000.ToString();
+      this.dataPerMeasurmentTextBox.Text = 2000.ToString();
+      this.progressBarPomiar.Maximum = this.emgThread.dataPerMeasurment;
+      this.progressBarPauza.Maximum = this.emgThread.dataPerPause;
       this.timerTEST.Start();
       this.emgThread.readDataTimer.Start();
     }
@@ -107,17 +120,8 @@ namespace EMG
       this.sensorRing.setValue(Convert.ToSingle(this.emgThread.data[20]));
       this.sensorMiddle.setValue(Convert.ToSingle(this.emgThread.data[21]));
       this.sensorIndex.setValue(Convert.ToSingle(this.emgThread.data[22])); */
-
-      if (this.progressBarPomiar.Value == this.progressBarPomiar.Maximum)
-      {
-        this.progressBarPomiar.Value = 0;
-      }
-      if (this.progressBarPauza.Value == this.progressBarPauza.Maximum)
-      {
-        this.progressBarPauza.Value = 0;
-      }
-      this.progressBarPomiar.Value++;
-      this.progressBarPauza.Value++;
+      this.progressBarPomiar.Value = this.emgThread.dataIndMeas;
+      this.progressBarPauza.Value = this.emgThread.dataIndPause;
     }
 
     /// <summary>
@@ -158,9 +162,10 @@ namespace EMG
     {
       try
       {
-        Directory.CreateDirectory("dane");
-        string tmpName = this.fileName + this.fileIndex.ToString() + ".txt";
-        tmpName = Path.GetFullPath(tmpName).Replace(tmpName, "") + "dane\\" + tmpName;
+        this.emgConsole.AddText(Directory.GetCurrentDirectory().ToString() + "\\" + this.folderNameTextBox.Text);
+        Directory.CreateDirectory(Directory.GetCurrentDirectory().ToString() + "\\" + this.folderNameTextBox.Text);
+        string tmpName = this.fileIndex.ToString() + ".txt";
+        tmpName = Path.GetFullPath(tmpName).Replace(tmpName, "") + this.folderNameTextBox.Text + tmpName;
 
         using (FileStream fs = new FileStream(tmpName, FileMode.Create, FileAccess.Write))
         using (StreamWriter outFile = new StreamWriter(fs, Encoding.ASCII))
@@ -168,7 +173,7 @@ namespace EMG
           try
           {
             this.emgConsole.AddText("Rozpoczęto zapis danych do pliku", true);
-            for (int i = 0; i < EMGthread.dataPerMeasurment; i++)
+            for (int i = 0; i < this.emgThread.dataPerMeasurment; i++)
             {
               outFile.Write((i + 1).ToString() + ": ");
               for (int j = 0; j < EMGthread.channelCount - 1; j++)
@@ -204,6 +209,42 @@ namespace EMG
       }
     }
 
-    private void stripItemSensory_CheckedChanged(object sender, EventArgs e) => EMGforceSensor.isDisabled = !this.stripItemSensory.Checked;
+    private void EMGtestGUI_KeyDown(object sender, KeyEventArgs e)
+    {
+      MessageBox.Show(e.KeyCode.ToString());
+      if (e.KeyCode == Keys.Space && this.emgThread.measurmentMode == TimerMode.Pause)
+      {
+        this.fileIndex--;
+        this.progressBarPauza.ForeColor = Color.SeaShell;
+      }
+    }
+
+    private void StartButton_Click(object sender, EventArgs e)
+    {
+      if (this.StartButton.Text == "Start")
+      {
+        this.emgThread.readDataTimer.Stop();
+        this.emgThread.dataPerMeasurment = int.Parse(this.dataPerMeasurmentTextBox.Text);
+        this.emgThread.dataPerPause = int.Parse(this.PauseTimeTextBox.Text);
+        this.progressBarPomiar.Maximum = this.emgThread.dataPerMeasurment;
+        this.progressBarPauza.Maximum = this.emgThread.dataPerPause;
+        this.StartButton.Text = "Stop";
+        this.emgThread.measurmentMode = TimerMode.Pause;
+        this.emgThread.readDataTimer.Tick -= new System.EventHandler(this.emgThread.ReadDataContinouslyFromPCIE);
+        this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadDataPauseMode);
+        this.emgThread.readDataTimer.Start();
+      }
+      else
+      {
+        this.emgThread.readDataTimer.Stop();
+        this.StartButton.Text = "Start";
+        this.emgThread.measurmentMode = TimerMode.Free;
+        this.emgThread.readDataTimer.Tick -= new System.EventHandler(this.emgThread.ReadDataPauseMode);
+        this.emgThread.readDataTimer.Tick -= new System.EventHandler(this.emgThread.ReadDataFromPCIE);
+        this.emgThread.readDataTimer.Tick += new System.EventHandler(this.emgThread.ReadDataContinouslyFromPCIE);
+        this.emgThread.readDataTimer.Start();
+      }
+    }
+    // private void stripItemSensory_CheckedChanged(object sender, EventArgs e) => EMGforceSensor.isDisabled = !this.stripItemSensory.Checked;
   }
 }

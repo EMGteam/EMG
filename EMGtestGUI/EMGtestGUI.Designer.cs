@@ -47,26 +47,49 @@
       this.emgChart3 = new EMG.EMGchart();
       this.emgChart2 = new EMG.EMGchart();
       this.emgChart1 = new EMG.EMGchart();
-      this.sensorThumb = new EMG.EMGforceSensor();
-      this.sensorIndex = new EMG.EMGforceSensor();
-      this.sensorMiddle = new EMG.EMGforceSensor();
-      this.sensorRing = new EMG.EMGforceSensor();
-      this.sensorPinky = new EMG.EMGforceSensor();
       this.buttonScreenshot = new System.Windows.Forms.Button();
       this.panelDebugConsole = new System.Windows.Forms.Panel();
       this.emgConsole = new EMG.EMGdebugConsole();
       this.panelCharts = new System.Windows.Forms.Panel();
       this.panelSensors = new System.Windows.Forms.Panel();
+      this.emGforceSensor24 = new EMG.EMGforceSensor();
+      this.emGforceSensor23 = new EMG.EMGforceSensor();
+      this.emGforceSensor22 = new EMG.EMGforceSensor();
+      this.emGforceSensor21 = new EMG.EMGforceSensor();
+      this.emGforceSensor20 = new EMG.EMGforceSensor();
+      this.emGforceSensor19 = new EMG.EMGforceSensor();
+      this.emGforceSensor18 = new EMG.EMGforceSensor();
+      this.emGforceSensor17 = new EMG.EMGforceSensor();
+      this.emGforceSensor16 = new EMG.EMGforceSensor();
+      this.emGforceSensor15 = new EMG.EMGforceSensor();
+      this.emGforceSensor14 = new EMG.EMGforceSensor();
+      this.emGforceSensor13 = new EMG.EMGforceSensor();
+      this.emGforceSensor12 = new EMG.EMGforceSensor();
+      this.emGforceSensor11 = new EMG.EMGforceSensor();
+      this.emGforceSensor10 = new EMG.EMGforceSensor();
+      this.emGforceSensor9 = new EMG.EMGforceSensor();
+      this.emGforceSensor8 = new EMG.EMGforceSensor();
+      this.emGforceSensor7 = new EMG.EMGforceSensor();
+      this.emGforceSensor6 = new EMG.EMGforceSensor();
+      this.emGforceSensor5 = new EMG.EMGforceSensor();
+      this.emGforceSensor4 = new EMG.EMGforceSensor();
+      this.emGforceSensor3 = new EMG.EMGforceSensor();
+      this.emGforceSensor2 = new EMG.EMGforceSensor();
+      this.emGforceSensor1 = new EMG.EMGforceSensor();
       this.panelButtons = new System.Windows.Forms.Panel();
+      this.StartButton = new System.Windows.Forms.Button();
+      this.folderNameLabel = new System.Windows.Forms.Label();
+      this.PauseTimeLabel = new System.Windows.Forms.Label();
+      this.dataPerMeasurmentLabel = new System.Windows.Forms.Label();
+      this.PauseTimeTextBox = new System.Windows.Forms.TextBox();
+      this.dataPerMeasurmentTextBox = new System.Windows.Forms.TextBox();
+      this.folderNameTextBox = new System.Windows.Forms.TextBox();
       this.progressBarPauza = new System.Windows.Forms.ProgressBar();
       this.progressBarPomiar = new System.Windows.Forms.ProgressBar();
       this.stripMenu = new System.Windows.Forms.MenuStrip();
       this.menuMenu = new System.Windows.Forms.ToolStripMenuItem();
       this.stripItemRejestruj = new System.Windows.Forms.ToolStripMenuItem();
       this.stripItemWyczysc = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuOpcje = new System.Windows.Forms.ToolStripMenuItem();
-      this.stripItemUstawienia = new System.Windows.Forms.ToolStripMenuItem();
-      this.stripItemSensory = new System.Windows.Forms.ToolStripMenuItem();
       this.menuPomoc = new System.Windows.Forms.ToolStripMenuItem();
       this.stripItemHelp = new System.Windows.Forms.ToolStripMenuItem();
       this.stripItemAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +109,7 @@
       // 
       // emgChart16
       // 
+      this.emgChart16.CurrentMaxValue = 6F;
       this.emgChart16.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart16.Location = new System.Drawing.Point(263, 472);
       this.emgChart16.Name = "emgChart16";
@@ -94,6 +118,7 @@
       // 
       // emgChart15
       // 
+      this.emgChart15.CurrentMaxValue = 6F;
       this.emgChart15.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart15.Location = new System.Drawing.Point(3, 472);
       this.emgChart15.Name = "emgChart15";
@@ -102,6 +127,7 @@
       // 
       // emgChart14
       // 
+      this.emgChart14.CurrentMaxValue = 6F;
       this.emgChart14.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart14.Location = new System.Drawing.Point(263, 405);
       this.emgChart14.Name = "emgChart14";
@@ -110,6 +136,7 @@
       // 
       // emgChart13
       // 
+      this.emgChart13.CurrentMaxValue = 6F;
       this.emgChart13.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart13.Location = new System.Drawing.Point(3, 405);
       this.emgChart13.Name = "emgChart13";
@@ -118,6 +145,7 @@
       // 
       // emgChart12
       // 
+      this.emgChart12.CurrentMaxValue = 6F;
       this.emgChart12.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart12.Location = new System.Drawing.Point(263, 338);
       this.emgChart12.Name = "emgChart12";
@@ -126,6 +154,7 @@
       // 
       // emgChart11
       // 
+      this.emgChart11.CurrentMaxValue = 6F;
       this.emgChart11.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart11.Location = new System.Drawing.Point(3, 338);
       this.emgChart11.Name = "emgChart11";
@@ -134,6 +163,7 @@
       // 
       // emgChart10
       // 
+      this.emgChart10.CurrentMaxValue = 6F;
       this.emgChart10.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart10.Location = new System.Drawing.Point(263, 271);
       this.emgChart10.Name = "emgChart10";
@@ -142,6 +172,7 @@
       // 
       // emgChart9
       // 
+      this.emgChart9.CurrentMaxValue = 6F;
       this.emgChart9.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart9.Location = new System.Drawing.Point(3, 271);
       this.emgChart9.Name = "emgChart9";
@@ -150,6 +181,7 @@
       // 
       // emgChart8
       // 
+      this.emgChart8.CurrentMaxValue = 6F;
       this.emgChart8.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart8.Location = new System.Drawing.Point(263, 204);
       this.emgChart8.Name = "emgChart8";
@@ -158,6 +190,7 @@
       // 
       // emgChart7
       // 
+      this.emgChart7.CurrentMaxValue = 6F;
       this.emgChart7.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart7.Location = new System.Drawing.Point(3, 204);
       this.emgChart7.Name = "emgChart7";
@@ -166,6 +199,7 @@
       // 
       // emgChart6
       // 
+      this.emgChart6.CurrentMaxValue = 6F;
       this.emgChart6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart6.Location = new System.Drawing.Point(263, 137);
       this.emgChart6.Name = "emgChart6";
@@ -174,6 +208,7 @@
       // 
       // emgChart5
       // 
+      this.emgChart5.CurrentMaxValue = 6F;
       this.emgChart5.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart5.Location = new System.Drawing.Point(3, 137);
       this.emgChart5.Name = "emgChart5";
@@ -182,6 +217,7 @@
       // 
       // emgChart4
       // 
+      this.emgChart4.CurrentMaxValue = 6F;
       this.emgChart4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart4.Location = new System.Drawing.Point(263, 70);
       this.emgChart4.Name = "emgChart4";
@@ -190,6 +226,7 @@
       // 
       // emgChart3
       // 
+      this.emgChart3.CurrentMaxValue = 6F;
       this.emgChart3.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart3.Location = new System.Drawing.Point(3, 70);
       this.emgChart3.Name = "emgChart3";
@@ -198,6 +235,7 @@
       // 
       // emgChart2
       // 
+      this.emgChart2.CurrentMaxValue = 6F;
       this.emgChart2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart2.Location = new System.Drawing.Point(263, 3);
       this.emgChart2.Name = "emgChart2";
@@ -206,55 +244,16 @@
       // 
       // emgChart1
       // 
+      this.emgChart1.CurrentMaxValue = 6F;
       this.emgChart1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
       this.emgChart1.Location = new System.Drawing.Point(3, 3);
       this.emgChart1.Name = "emgChart1";
       this.emgChart1.Size = new System.Drawing.Size(257, 64);
       this.emgChart1.TabIndex = 0;
       // 
-      // sensorThumb
-      // 
-      this.sensorThumb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.sensorThumb.Location = new System.Drawing.Point(349, 204);
-      this.sensorThumb.Name = "sensorThumb";
-      this.sensorThumb.Size = new System.Drawing.Size(25, 25);
-      this.sensorThumb.TabIndex = 17;
-      // 
-      // sensorIndex
-      // 
-      this.sensorIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.sensorIndex.Location = new System.Drawing.Point(257, 42);
-      this.sensorIndex.Name = "sensorIndex";
-      this.sensorIndex.Size = new System.Drawing.Size(25, 25);
-      this.sensorIndex.TabIndex = 18;
-      // 
-      // sensorMiddle
-      // 
-      this.sensorMiddle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.sensorMiddle.Location = new System.Drawing.Point(158, 16);
-      this.sensorMiddle.Name = "sensorMiddle";
-      this.sensorMiddle.Size = new System.Drawing.Size(25, 25);
-      this.sensorMiddle.TabIndex = 19;
-      // 
-      // sensorRing
-      // 
-      this.sensorRing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.sensorRing.Location = new System.Drawing.Point(77, 51);
-      this.sensorRing.Name = "sensorRing";
-      this.sensorRing.Size = new System.Drawing.Size(25, 25);
-      this.sensorRing.TabIndex = 20;
-      // 
-      // sensorPinky
-      // 
-      this.sensorPinky.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.sensorPinky.Location = new System.Drawing.Point(24, 124);
-      this.sensorPinky.Name = "sensorPinky";
-      this.sensorPinky.Size = new System.Drawing.Size(25, 25);
-      this.sensorPinky.TabIndex = 21;
-      // 
       // buttonScreenshot
       // 
-      this.buttonScreenshot.Location = new System.Drawing.Point(322, 119);
+      this.buttonScreenshot.Location = new System.Drawing.Point(311, 119);
       this.buttonScreenshot.Name = "buttonScreenshot";
       this.buttonScreenshot.Size = new System.Drawing.Size(75, 23);
       this.buttonScreenshot.TabIndex = 22;
@@ -322,21 +321,263 @@
       this.panelSensors.BackColor = System.Drawing.Color.Transparent;
       this.panelSensors.BackgroundImage = global::EMGtestGUI.Properties.Resources.EMGhandTemplateInvertedNoWrist;
       this.panelSensors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-      this.panelSensors.Controls.Add(this.sensorThumb);
-      this.panelSensors.Controls.Add(this.sensorIndex);
-      this.panelSensors.Controls.Add(this.sensorMiddle);
-      this.panelSensors.Controls.Add(this.sensorRing);
-      this.panelSensors.Controls.Add(this.sensorPinky);
+      this.panelSensors.Controls.Add(this.emGforceSensor24);
+      this.panelSensors.Controls.Add(this.emGforceSensor23);
+      this.panelSensors.Controls.Add(this.emGforceSensor22);
+      this.panelSensors.Controls.Add(this.emGforceSensor21);
+      this.panelSensors.Controls.Add(this.emGforceSensor20);
+      this.panelSensors.Controls.Add(this.emGforceSensor19);
+      this.panelSensors.Controls.Add(this.emGforceSensor18);
+      this.panelSensors.Controls.Add(this.emGforceSensor17);
+      this.panelSensors.Controls.Add(this.emGforceSensor16);
+      this.panelSensors.Controls.Add(this.emGforceSensor15);
+      this.panelSensors.Controls.Add(this.emGforceSensor14);
+      this.panelSensors.Controls.Add(this.emGforceSensor13);
+      this.panelSensors.Controls.Add(this.emGforceSensor12);
+      this.panelSensors.Controls.Add(this.emGforceSensor11);
+      this.panelSensors.Controls.Add(this.emGforceSensor10);
+      this.panelSensors.Controls.Add(this.emGforceSensor9);
+      this.panelSensors.Controls.Add(this.emGforceSensor8);
+      this.panelSensors.Controls.Add(this.emGforceSensor7);
+      this.panelSensors.Controls.Add(this.emGforceSensor6);
+      this.panelSensors.Controls.Add(this.emGforceSensor5);
+      this.panelSensors.Controls.Add(this.emGforceSensor4);
+      this.panelSensors.Controls.Add(this.emGforceSensor3);
+      this.panelSensors.Controls.Add(this.emGforceSensor2);
+      this.panelSensors.Controls.Add(this.emGforceSensor1);
       this.panelSensors.Location = new System.Drawing.Point(536, 25);
       this.panelSensors.Name = "panelSensors";
       this.panelSensors.Size = new System.Drawing.Size(400, 373);
       this.panelSensors.TabIndex = 26;
+      // 
+      // emGforceSensor24
+      // 
+      this.emGforceSensor24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor24.Location = new System.Drawing.Point(15, 121);
+      this.emGforceSensor24.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor24.Name = "emGforceSensor24";
+      this.emGforceSensor24.Size = new System.Drawing.Size(38, 39);
+      this.emGforceSensor24.TabIndex = 26;
+      // 
+      // emGforceSensor23
+      // 
+      this.emGforceSensor23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor23.Location = new System.Drawing.Point(58, 194);
+      this.emGforceSensor23.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor23.Name = "emGforceSensor23";
+      this.emGforceSensor23.Size = new System.Drawing.Size(30, 34);
+      this.emGforceSensor23.TabIndex = 25;
+      // 
+      // emGforceSensor22
+      // 
+      this.emGforceSensor22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor22.Location = new System.Drawing.Point(15, 102);
+      this.emGforceSensor22.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor22.Name = "emGforceSensor22";
+      this.emGforceSensor22.Size = new System.Drawing.Size(10, 153);
+      this.emGforceSensor22.TabIndex = 24;
+      // 
+      // emGforceSensor21
+      // 
+      this.emGforceSensor21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor21.Location = new System.Drawing.Point(277, 70);
+      this.emGforceSensor21.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor21.Name = "emGforceSensor21";
+      this.emGforceSensor21.Size = new System.Drawing.Size(20, 43);
+      this.emGforceSensor21.TabIndex = 23;
+      // 
+      // emGforceSensor20
+      // 
+      this.emGforceSensor20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor20.Location = new System.Drawing.Point(277, 34);
+      this.emGforceSensor20.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor20.Name = "emGforceSensor20";
+      this.emGforceSensor20.Size = new System.Drawing.Size(19, 34);
+      this.emGforceSensor20.TabIndex = 22;
+      // 
+      // emGforceSensor19
+      // 
+      this.emGforceSensor19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor19.Location = new System.Drawing.Point(240, 26);
+      this.emGforceSensor19.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor19.Name = "emGforceSensor19";
+      this.emGforceSensor19.Size = new System.Drawing.Size(38, 35);
+      this.emGforceSensor19.TabIndex = 21;
+      // 
+      // emGforceSensor18
+      // 
+      this.emGforceSensor18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor18.Location = new System.Drawing.Point(240, 204);
+      this.emGforceSensor18.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor18.Name = "emGforceSensor18";
+      this.emGforceSensor18.Size = new System.Drawing.Size(38, 35);
+      this.emGforceSensor18.TabIndex = 20;
+      // 
+      // emGforceSensor17
+      // 
+      this.emGforceSensor17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor17.Location = new System.Drawing.Point(240, 138);
+      this.emGforceSensor17.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor17.Name = "emGforceSensor17";
+      this.emGforceSensor17.Size = new System.Drawing.Size(38, 38);
+      this.emGforceSensor17.TabIndex = 19;
+      // 
+      // emGforceSensor16
+      // 
+      this.emGforceSensor16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor16.Location = new System.Drawing.Point(227, 26);
+      this.emGforceSensor16.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor16.Name = "emGforceSensor16";
+      this.emGforceSensor16.Size = new System.Drawing.Size(11, 150);
+      this.emGforceSensor16.TabIndex = 18;
+      // 
+      // emGforceSensor15
+      // 
+      this.emGforceSensor15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor15.Location = new System.Drawing.Point(256, 281);
+      this.emGforceSensor15.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor15.Name = "emGforceSensor15";
+      this.emGforceSensor15.Size = new System.Drawing.Size(41, 38);
+      this.emGforceSensor15.TabIndex = 17;
+      // 
+      // emGforceSensor14
+      // 
+      this.emGforceSensor14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor14.Location = new System.Drawing.Point(240, 321);
+      this.emGforceSensor14.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor14.Name = "emGforceSensor14";
+      this.emGforceSensor14.Size = new System.Drawing.Size(36, 34);
+      this.emGforceSensor14.TabIndex = 16;
+      // 
+      // emGforceSensor13
+      // 
+      this.emGforceSensor13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor13.Location = new System.Drawing.Point(204, 257);
+      this.emGforceSensor13.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor13.Name = "emGforceSensor13";
+      this.emGforceSensor13.Size = new System.Drawing.Size(182, 11);
+      this.emGforceSensor13.TabIndex = 15;
+      // 
+      // emGforceSensor12
+      // 
+      this.emGforceSensor12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor12.Location = new System.Drawing.Point(110, 157);
+      this.emGforceSensor12.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor12.Name = "emGforceSensor12";
+      this.emGforceSensor12.Size = new System.Drawing.Size(43, 31);
+      this.emGforceSensor12.TabIndex = 14;
+      // 
+      // emGforceSensor11
+      // 
+      this.emGforceSensor11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor11.Location = new System.Drawing.Point(68, 48);
+      this.emGforceSensor11.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor11.Name = "emGforceSensor11";
+      this.emGforceSensor11.Size = new System.Drawing.Size(40, 35);
+      this.emGforceSensor11.TabIndex = 13;
+      // 
+      // emGforceSensor10
+      // 
+      this.emGforceSensor10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor10.Location = new System.Drawing.Point(110, 48);
+      this.emGforceSensor10.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor10.Name = "emGforceSensor10";
+      this.emGforceSensor10.Size = new System.Drawing.Size(10, 153);
+      this.emGforceSensor10.TabIndex = 12;
+      // 
+      // emGforceSensor9
+      // 
+      this.emGforceSensor9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor9.Location = new System.Drawing.Point(155, 3);
+      this.emGforceSensor9.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor9.Name = "emGforceSensor9";
+      this.emGforceSensor9.Size = new System.Drawing.Size(35, 31);
+      this.emGforceSensor9.TabIndex = 11;
+      // 
+      // emGforceSensor8
+      // 
+      this.emGforceSensor8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor8.Location = new System.Drawing.Point(168, 126);
+      this.emGforceSensor8.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor8.Name = "emGforceSensor8";
+      this.emGforceSensor8.Size = new System.Drawing.Size(36, 34);
+      this.emGforceSensor8.TabIndex = 10;
+      // 
+      // emGforceSensor7
+      // 
+      this.emGforceSensor7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor7.Location = new System.Drawing.Point(155, 3);
+      this.emGforceSensor7.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor7.Name = "emGforceSensor7";
+      this.emGforceSensor7.Size = new System.Drawing.Size(11, 173);
+      this.emGforceSensor7.TabIndex = 9;
+      // 
+      // emGforceSensor6
+      // 
+      this.emGforceSensor6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor6.Location = new System.Drawing.Point(312, 285);
+      this.emGforceSensor6.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor6.Name = "emGforceSensor6";
+      this.emGforceSensor6.Size = new System.Drawing.Size(11, 62);
+      this.emGforceSensor6.TabIndex = 8;
+      // 
+      // emGforceSensor5
+      // 
+      this.emGforceSensor5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor5.Location = new System.Drawing.Point(312, 230);
+      this.emGforceSensor5.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor5.Name = "emGforceSensor5";
+      this.emGforceSensor5.Size = new System.Drawing.Size(45, 25);
+      this.emGforceSensor5.TabIndex = 7;
+      // 
+      // emGforceSensor4
+      // 
+      this.emGforceSensor4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor4.Location = new System.Drawing.Point(346, 204);
+      this.emGforceSensor4.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor4.Name = "emGforceSensor4";
+      this.emGforceSensor4.Size = new System.Drawing.Size(40, 24);
+      this.emGforceSensor4.TabIndex = 6;
+      // 
+      // emGforceSensor3
+      // 
+      this.emGforceSensor3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor3.Location = new System.Drawing.Point(110, 321);
+      this.emGforceSensor3.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor3.Name = "emGforceSensor3";
+      this.emGforceSensor3.Size = new System.Drawing.Size(43, 36);
+      this.emGforceSensor3.TabIndex = 5;
+      // 
+      // emGforceSensor2
+      // 
+      this.emGforceSensor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor2.Location = new System.Drawing.Point(99, 285);
+      this.emGforceSensor2.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor2.Name = "emGforceSensor2";
+      this.emGforceSensor2.Size = new System.Drawing.Size(43, 34);
+      this.emGforceSensor2.TabIndex = 4;
+      // 
+      // emGforceSensor1
+      // 
+      this.emGforceSensor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.emGforceSensor1.Location = new System.Drawing.Point(78, 230);
+      this.emGforceSensor1.Margin = new System.Windows.Forms.Padding(1);
+      this.emGforceSensor1.Name = "emGforceSensor1";
+      this.emGforceSensor1.Size = new System.Drawing.Size(160, 24);
+      this.emGforceSensor1.TabIndex = 3;
       // 
       // panelButtons
       // 
       this.panelButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.panelButtons.Controls.Add(this.StartButton);
+      this.panelButtons.Controls.Add(this.folderNameLabel);
+      this.panelButtons.Controls.Add(this.PauseTimeLabel);
+      this.panelButtons.Controls.Add(this.dataPerMeasurmentLabel);
+      this.panelButtons.Controls.Add(this.PauseTimeTextBox);
+      this.panelButtons.Controls.Add(this.dataPerMeasurmentTextBox);
+      this.panelButtons.Controls.Add(this.folderNameTextBox);
       this.panelButtons.Controls.Add(this.progressBarPauza);
       this.panelButtons.Controls.Add(this.progressBarPomiar);
       this.panelButtons.Controls.Add(this.buttonScreenshot);
@@ -345,12 +586,70 @@
       this.panelButtons.Size = new System.Drawing.Size(400, 160);
       this.panelButtons.TabIndex = 27;
       // 
+      // StartButton
+      // 
+      this.StartButton.Location = new System.Drawing.Point(13, 119);
+      this.StartButton.Name = "StartButton";
+      this.StartButton.Size = new System.Drawing.Size(116, 23);
+      this.StartButton.TabIndex = 31;
+      this.StartButton.Text = "Rozpocznij pomiar";
+      this.StartButton.UseVisualStyleBackColor = true;
+      this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+      // 
+      // folderNameLabel
+      // 
+      this.folderNameLabel.AutoSize = true;
+      this.folderNameLabel.Location = new System.Drawing.Point(201, 74);
+      this.folderNameLabel.Name = "folderNameLabel";
+      this.folderNameLabel.Size = new System.Drawing.Size(78, 13);
+      this.folderNameLabel.TabIndex = 30;
+      this.folderNameLabel.Text = "Ścieżka zapisu";
+      // 
+      // PauseTimeLabel
+      // 
+      this.PauseTimeLabel.AutoSize = true;
+      this.PauseTimeLabel.Location = new System.Drawing.Point(112, 74);
+      this.PauseTimeLabel.Name = "PauseTimeLabel";
+      this.PauseTimeLabel.Size = new System.Drawing.Size(83, 13);
+      this.PauseTimeLabel.TabIndex = 29;
+      this.PauseTimeLabel.Text = "Czas pauzy (ms)";
+      // 
+      // dataPerMeasurmentLabel
+      // 
+      this.dataPerMeasurmentLabel.AutoSize = true;
+      this.dataPerMeasurmentLabel.Location = new System.Drawing.Point(15, 74);
+      this.dataPerMeasurmentLabel.Name = "dataPerMeasurmentLabel";
+      this.dataPerMeasurmentLabel.Size = new System.Drawing.Size(92, 13);
+      this.dataPerMeasurmentLabel.TabIndex = 28;
+      this.dataPerMeasurmentLabel.Text = "Czas pomiaru (ms)";
+      // 
+      // PauseTimeTextBox
+      // 
+      this.PauseTimeTextBox.Location = new System.Drawing.Point(113, 93);
+      this.PauseTimeTextBox.Name = "PauseTimeTextBox";
+      this.PauseTimeTextBox.Size = new System.Drawing.Size(82, 20);
+      this.PauseTimeTextBox.TabIndex = 27;
+      // 
+      // dataPerMeasurmentTextBox
+      // 
+      this.dataPerMeasurmentTextBox.Location = new System.Drawing.Point(15, 93);
+      this.dataPerMeasurmentTextBox.Name = "dataPerMeasurmentTextBox";
+      this.dataPerMeasurmentTextBox.Size = new System.Drawing.Size(92, 20);
+      this.dataPerMeasurmentTextBox.TabIndex = 26;
+      // 
+      // folderNameTextBox
+      // 
+      this.folderNameTextBox.Location = new System.Drawing.Point(204, 93);
+      this.folderNameTextBox.Name = "folderNameTextBox";
+      this.folderNameTextBox.Size = new System.Drawing.Size(182, 20);
+      this.folderNameTextBox.TabIndex = 25;
+      // 
       // progressBarPauza
       // 
       this.progressBarPauza.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.progressBarPauza.ForeColor = System.Drawing.Color.Lime;
-      this.progressBarPauza.Location = new System.Drawing.Point(15, 81);
+      this.progressBarPauza.Location = new System.Drawing.Point(15, 44);
       this.progressBarPauza.Maximum = 250;
       this.progressBarPauza.Name = "progressBarPauza";
       this.progressBarPauza.Size = new System.Drawing.Size(371, 23);
@@ -362,7 +661,7 @@
       this.progressBarPomiar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.progressBarPomiar.ForeColor = System.Drawing.Color.Red;
-      this.progressBarPomiar.Location = new System.Drawing.Point(15, 52);
+      this.progressBarPomiar.Location = new System.Drawing.Point(15, 15);
       this.progressBarPomiar.Name = "progressBarPomiar";
       this.progressBarPomiar.Size = new System.Drawing.Size(371, 23);
       this.progressBarPomiar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -374,7 +673,6 @@
       this.stripMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
       this.stripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMenu,
-            this.menuOpcje,
             this.menuPomoc});
       this.stripMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
       this.stripMenu.Location = new System.Drawing.Point(0, 0);
@@ -405,31 +703,6 @@
       this.stripItemWyczysc.Size = new System.Drawing.Size(118, 22);
       this.stripItemWyczysc.Text = "Wyczyść";
       this.stripItemWyczysc.Click += new System.EventHandler(this.stripItemWyczysc_Click);
-      // 
-      // menuOpcje
-      // 
-      this.menuOpcje.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stripItemUstawienia,
-            this.stripItemSensory});
-      this.menuOpcje.Name = "menuOpcje";
-      this.menuOpcje.Size = new System.Drawing.Size(47, 17);
-      this.menuOpcje.Text = "Opcje";
-      // 
-      // stripItemUstawienia
-      // 
-      this.stripItemUstawienia.Name = "stripItemUstawienia";
-      this.stripItemUstawienia.Size = new System.Drawing.Size(152, 22);
-      this.stripItemUstawienia.Text = "Ustawienia";
-      // 
-      // stripItemSensory
-      // 
-      this.stripItemSensory.Checked = true;
-      this.stripItemSensory.CheckOnClick = true;
-      this.stripItemSensory.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.stripItemSensory.Name = "stripItemSensory";
-      this.stripItemSensory.Size = new System.Drawing.Size(152, 22);
-      this.stripItemSensory.Text = "Sensory Nacisku";
-      this.stripItemSensory.CheckedChanged += new System.EventHandler(this.stripItemSensory_CheckedChanged);
       // 
       // menuPomoc
       // 
@@ -475,6 +748,7 @@
       this.panelCharts.ResumeLayout(false);
       this.panelSensors.ResumeLayout(false);
       this.panelButtons.ResumeLayout(false);
+      this.panelButtons.PerformLayout();
       this.stripMenu.ResumeLayout(false);
       this.stripMenu.PerformLayout();
       this.ResumeLayout(false);
@@ -501,11 +775,6 @@
     private EMGchart emgChart14;
     private EMGchart emgChart15;
     private EMGchart emgChart16;
-    private EMGforceSensor sensorThumb;
-    private EMGforceSensor sensorIndex;
-    private EMGforceSensor sensorMiddle;
-    private EMGforceSensor sensorRing;
-    private EMGforceSensor sensorPinky;
     private System.Windows.Forms.Button buttonScreenshot;
     private EMGdebugConsole emgConsole;
     private System.Windows.Forms.Panel panelDebugConsole;
@@ -518,14 +787,42 @@
     private System.Windows.Forms.ToolStripMenuItem menuMenu;
     private System.Windows.Forms.ToolStripMenuItem menuPomoc;
     private System.Windows.Forms.ToolStripMenuItem stripItemRejestruj;
-    private System.Windows.Forms.ToolStripMenuItem menuOpcje;
     private System.Windows.Forms.ToolStripMenuItem stripItemHelp;
     private System.Windows.Forms.ToolStripMenuItem stripItemAbout;
-    private System.Windows.Forms.ToolStripMenuItem stripItemUstawienia;
     private System.Windows.Forms.ToolStripMenuItem stripItemWyczysc;
-    private System.Windows.Forms.ToolStripMenuItem stripItemSensory;
 
     // private Automation.BDaq.BufferedAiCtrl bufferedAiCtrl1;
     private Automation.BDaq.InstantAiCtrl instantAiCtrl1;
+    private EMGforceSensor emGforceSensor24;
+    private EMGforceSensor emGforceSensor23;
+    private EMGforceSensor emGforceSensor22;
+    private EMGforceSensor emGforceSensor21;
+    private EMGforceSensor emGforceSensor20;
+    private EMGforceSensor emGforceSensor19;
+    private EMGforceSensor emGforceSensor18;
+    private EMGforceSensor emGforceSensor17;
+    private EMGforceSensor emGforceSensor16;
+    private EMGforceSensor emGforceSensor15;
+    private EMGforceSensor emGforceSensor14;
+    private EMGforceSensor emGforceSensor13;
+    private EMGforceSensor emGforceSensor12;
+    private EMGforceSensor emGforceSensor11;
+    private EMGforceSensor emGforceSensor10;
+    private EMGforceSensor emGforceSensor9;
+    private EMGforceSensor emGforceSensor8;
+    private EMGforceSensor emGforceSensor7;
+    private EMGforceSensor emGforceSensor6;
+    private EMGforceSensor emGforceSensor5;
+    private EMGforceSensor emGforceSensor4;
+    private EMGforceSensor emGforceSensor3;
+    private EMGforceSensor emGforceSensor2;
+    private EMGforceSensor emGforceSensor1;
+    private System.Windows.Forms.Label folderNameLabel;
+    private System.Windows.Forms.Label PauseTimeLabel;
+    private System.Windows.Forms.Label dataPerMeasurmentLabel;
+    private System.Windows.Forms.TextBox PauseTimeTextBox;
+    private System.Windows.Forms.TextBox dataPerMeasurmentTextBox;
+    private System.Windows.Forms.TextBox folderNameTextBox;
+    private System.Windows.Forms.Button StartButton;
   }
 }
